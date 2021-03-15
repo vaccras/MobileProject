@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Project">
         <activity android:name=".typeActivity"></activity>
         <activity android:name=".compteActivity" />
+        <activity android:name=".AddTaskActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
