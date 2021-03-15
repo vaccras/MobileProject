@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".typeActivity">
+
+    <Button android:id="@+id/math"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Math"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/culture"
+        android:onClick="MathActivity"/>
+
+    <Button android:id="@+id/culture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Culture"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/annuler"
+        android:onClick="CultureActivity"/>
+
+    <Button android:id="@+id/annuler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annuler"
+        android:layout_centerInParent="true"
+        android:onClick="annuler"/>
+</RelativeLayout>
