@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class typeActivity extends AppCompatActivity {
-    public static final String ANONYME = "1";
+    public static final String PRENOM = "anonyme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

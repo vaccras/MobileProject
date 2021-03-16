@@ -39,10 +39,12 @@ public class CompteAdapter extends ArrayAdapter<Compte> {
         // Récupération des objets graphiques dans le template
         TextView textViewPrenom = (TextView) rowView.findViewById(R.id.textPrenom);
         TextView textViewNom = (TextView) rowView.findViewById(R.id.textNom);
+        TextView textViewAge = (TextView) rowView.findViewById(R.id.textAge);
 
         //mise a jour de l'affichage
         textViewPrenom.setText(cmpt.getPrenom());
         textViewNom.setText(cmpt.getNom());
+        textViewAge.setText(String.valueOf(cmpt.getAge())+"ans");
 
         return rowView;
     }

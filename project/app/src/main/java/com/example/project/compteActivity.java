@@ -51,9 +51,7 @@ public class compteActivity extends AppCompatActivity {
                 // Message
                 Toast.makeText(compteActivity.this, "Click : " + cmpt.getPrenom(), Toast.LENGTH_SHORT).show();
 
-                //Intent intent = new Intent(this, typeActivity.class);
-                //intent.putExtra(typeActivity.ANONYME, "0");
-                //startActivity(intent);
+                nextPage(cmpt.getPrenom(), view);
             }
         });
 
@@ -108,8 +106,14 @@ public class compteActivity extends AppCompatActivity {
     public void AnonymeActivity(View view) {
         //jouer en anonyme -> pas de compte de score accés restreint ?
         Intent intent = new Intent(this, typeActivity.class);
-        intent.putExtra(typeActivity.ANONYME, "1");
+        intent.putExtra(typeActivity.PRENOM, "anonyme");
         //startActivityForResult(intent, ANONYME_REQUEST);
+        startActivity(intent);
+    }
+
+    public void nextPage(String prenom, View view){
+        Intent intent = new Intent(this, typeActivity.class);
+        intent.putExtra(typeActivity.PRENOM, prenom);
         startActivity(intent);
     }
 }

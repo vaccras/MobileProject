@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="Nom"
+            android:text="Prenom"
             android:textSize="30sp"/>
         <TextView android:id="@+id/textNom"
             android:layout_width="match_parent"
@@ -21,5 +21,10 @@
             android:layout_marginLeft="5dp"
             android:text="Nom"
             android:textSize="30sp"/>
+        <TextView android:id="@+id/textAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="age"/>
     </LinearLayout>
 </LinearLayout>

@@ -47,7 +47,7 @@ public class AddTaskActivity extends AppCompatActivity {
         creer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveTask();
+                saveCompte();
             }
         });
 
@@ -59,43 +59,44 @@ public class AddTaskActivity extends AppCompatActivity {
         });
     }
 
-    private void saveTask() {
+    private void saveCompte() {
 
         // Récupérer les informations contenues dans les vues
         final String sPrenom = editTextPrenom.getText().toString().trim();
         final String sNom = editTextNom.getText().toString().trim();
+
         final int sAge = Integer.parseInt(String.valueOf(editTextAge.getText()));
+
+        if (sAge > 0) {
+            editTextAge.setError("age inferieur à 0");
+            editTextAge.requestFocus();
+            return;
+        }
 
         // Vérifier les informations fournies par l'utilisateur
         if (sPrenom.isEmpty()) {
-            editTextPrenom.setError("Task required");
+            editTextPrenom.setError("Prenom necessaire");
             editTextPrenom.requestFocus();
             return;
         }
 
         if (sNom.isEmpty()) {
-            editTextNom.setError("Desc required");
+            editTextNom.setError("Nom necessaire");
             editTextNom.requestFocus();
             return;
         }
 
-        if (sAge > 0) {
-            editTextAge.setError("Desc required");
-            editTextAge.requestFocus();
-            return;
-        }
-
-
         /**
          * Création d'une classe asynchrone pour sauvegarder la tache donnée par l'utilisateur
          */
-        class SaveTask extends AsyncTask<Void, Void, Compte> {
+        class SaveCompte extends AsyncTask<Void, Void, Compte> {
 
             @Override
             protected Compte doInBackground(Void... voids) {
 
                 // creating a task
                 Compte cmpt = new Compte();
+
                 cmpt.setPrenom(sPrenom);
                 cmpt.setNom(sNom);
                 cmpt.setAge(sAge);
@@ -119,10 +120,9 @@ public class AddTaskActivity extends AppCompatActivity {
             }
         }
 
-        //////////////////////////
         // IMPORTANT bien penser à executer la demande asynchrone
-        SaveTask st = new SaveTask();
-        st.execute();
+        SaveCompte sc = new SaveCompte();
+        sc.execute();
     }
 
     private void annuler() {
