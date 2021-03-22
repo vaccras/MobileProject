@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -51,7 +52,7 @@ public class compteActivity extends AppCompatActivity {
                 // Message
                 Toast.makeText(compteActivity.this, "Click : " + cmpt.getPrenom(), Toast.LENGTH_SHORT).show();
 
-                nextPage(cmpt.getPrenom(), view);
+                nextPage(cmpt.getPrenom(), cmpt.getNom(), view);
             }
         });
 
@@ -65,9 +66,7 @@ public class compteActivity extends AppCompatActivity {
 
             @Override
             protected List<Compte> doInBackground(Void... voids) {
-                List<Compte> compteList = mDb.getAppDatabase()
-                        .compteDao()
-                        .getAll();
+                List<Compte> compteList = mDb.getAppDatabase().compteDao().getAll();
                 return compteList;
             }
 
@@ -106,14 +105,17 @@ public class compteActivity extends AppCompatActivity {
     public void AnonymeActivity(View view) {
         //jouer en anonyme -> pas de compte de score accés restreint ?
         Intent intent = new Intent(this, typeActivity.class);
-        intent.putExtra(typeActivity.PRENOM, "anonyme");
+        intent.putExtra(typeActivity.PRENOM_KEY, "anonyme");
+        intent.putExtra(typeActivity.NOM_KEY, "anonyme");
         //startActivityForResult(intent, ANONYME_REQUEST);
         startActivity(intent);
     }
 
-    public void nextPage(String prenom, View view){
+    public void nextPage(String prenom, String nom, View view){
         Intent intent = new Intent(this, typeActivity.class);
-        intent.putExtra(typeActivity.PRENOM, prenom);
+        intent.putExtra(typeActivity.PRENOM_KEY, prenom);
+        intent.putExtra(typeActivity.NOM_KEY, nom);
+
         startActivity(intent);
     }
 }

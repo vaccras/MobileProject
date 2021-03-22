@@ -50,9 +50,9 @@ public class DatabaseClient {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            db.execSQL("INSERT INTO Compte (prenom, nom, age) VALUES(\"Louise\", \"Charpe\",6);");
-            db.execSQL("INSERT INTO Compte (prenom, nom, age) VALUES(\"Romain\", \"Favier\",8);");
-            db.execSQL("INSERT INTO Compte (prenom, nom, age) VALUES(\"Cloé\", \"Dupuy\",9);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Louise\", \"Charpe\",6,10,20,8);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Romain\", \"Favier\",8,15,10,3);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Cloé\", \"Dupuy\",9,5,10,20);");
 
         }
     };

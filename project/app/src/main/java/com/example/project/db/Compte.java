@@ -21,11 +21,19 @@ public class Compte implements Serializable {
     @ColumnInfo(name = "age")
     private int age;
 
+    @ColumnInfo(name = "calcul")
+    private int calcul;
+
+    @ColumnInfo(name = "geometrie")
+    private int geometrie;
+
+    @ColumnInfo(name = "culture")
+    private int culture;
+
     /*** Getters and Setters ***/
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -33,7 +41,6 @@ public class Compte implements Serializable {
     public String getPrenom() {
         return prenom;
     }
-
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
@@ -41,7 +48,6 @@ public class Compte implements Serializable {
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -49,9 +55,29 @@ public class Compte implements Serializable {
     public int getAge() {
         return age;
     }
-
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public int getCalcul() {
+        return calcul;
+    }
+    public void setCalcul(int calcul) {
+        this.calcul = calcul;
+    }
+
+    public int getGeometrie() {
+        return geometrie;
+    }
+    public void setGeometrie(int geometrie) {
+        this.geometrie = geometrie;
+    }
+
+    public int getCulture() {
+        return culture;
+    }
+    public void setCulture(int culture) {
+        this.culture = culture;
     }
 
 }

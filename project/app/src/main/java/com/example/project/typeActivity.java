@@ -2,16 +2,31 @@ package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class typeActivity extends AppCompatActivity {
-    public static final String PRENOM = "anonyme";
+    public static final String PRENOM_KEY = "PRENOM";
+    public static final String NOM_KEY = "NOM";
+
+    private String prenom;
+    private String nom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+        prenom = getIntent().getStringExtra(PRENOM_KEY);
+        nom = getIntent().getStringExtra(NOM_KEY);
+
+        if (prenom != "anonyme" && nom != "anonyme"){
+            Button profil = findViewById(R.id.profil);
+            profil.setVisibility(View.VISIBLE);
+        }
     }
 
     public void MathActivity(View view) {
@@ -22,5 +37,16 @@ public class typeActivity extends AppCompatActivity {
 
     public void annuler(View view) {
         super.finish();
+    }
+
+    public void quitter(View view) {
+        System.exit(0);
+    }
+
+    public void profil(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
+        intent.putExtra(ProfileActivity.NOM_KEY, nom);
+        startActivity(intent);
     }
 }

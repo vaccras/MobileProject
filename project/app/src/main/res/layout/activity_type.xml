@@ -6,26 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".typeActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/profil"
+        android:layout_centerHorizontal="true"
+        >
     <Button android:id="@+id/math"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Math"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/culture"
-        android:onClick="MathActivity"/>
+        android:onClick="MathActivity"
+        android:layout_marginRight="7dp"/>
 
     <Button android:id="@+id/culture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Histoire"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/annuler"
-        android:onClick="CultureActivity"/>
+        android:onClick="CultureActivity"
+        android:layout_marginLeft="7dp"/>
+    </LinearLayout>
+
+    <Button android:id="@+id/profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profil"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:onClick="profil"/>
 
     <Button android:id="@+id/annuler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Annuler"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
         android:onClick="annuler"/>
+
+    <Button android:id="@+id/quitterr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quitter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="quitter"/>
 </RelativeLayout>

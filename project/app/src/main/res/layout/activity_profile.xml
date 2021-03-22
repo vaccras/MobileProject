@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <TextView android:id="@+id/textPrenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_centerHorizontal="true"
+        android:text="Profil Prenom"
+        android:textSize="30sp"/>
+
+    <LinearLayout
+        android:id="@+id/calcul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/geometrie">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercice de Calcul : "
+            android:textSize="22dp"
+            android:layout_marginRight="50dp"/>
+        <TextView
+            android:id="@+id/txtCalcul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resu"
+            android:textSize="22dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/geometrie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/culture">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercice de Geometrie : "
+            android:textSize="22dp"
+            android:layout_marginRight="8dp"/>
+        <TextView
+            android:id="@+id/txtGeom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resu"
+            android:textSize="22dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/culture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/retour">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exercice de Culture : "
+            android:textSize="22dp"
+            android:layout_marginRight="40dp"/>
+        <TextView
+            android:id="@+id/txtCulture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resu"
+            android:textSize="22dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retour"
+        android:layout_centerInParent="true"
+        android:onClick="retour"/>
+</RelativeLayout>
