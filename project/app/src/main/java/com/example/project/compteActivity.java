@@ -118,4 +118,13 @@ public class compteActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Mise à jour des comptes après création par exemple
+        getComptes();
+
+    }
 }

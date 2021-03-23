@@ -12,30 +12,58 @@
         android:layout_margin="15dp"
         android:gravity="center"
         android:text="Creer un compte"
-        android:layout_above="@+id/editPrenom"
-        android:textSize="15dp"
+        android:layout_above="@+id/info"
+        android:textSize="30dp"
         android:layout_centerHorizontal="true"/>
 
-    <EditText
-        android:id="@+id/editPrenom"
+    <TableLayout
+        android:id="@+id/info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editNom"
-        android:text="Prenom : " />
+        android:layout_above="@+id/creer">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Prenom : " />
+            <EditText
+                android:id="@+id/editPrenom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text=""/>
+        </TableRow>
 
-    <EditText
-        android:id="@+id/editNom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/editAge"
-        android:text="Nom : " />
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Nom : " />
+            <EditText
+                android:id="@+id/editNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="..."/>
+        </TableRow>
 
-    <EditText
-        android:id="@+id/editAge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/creer"
-        android:text="Age : " />
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="Age : " />
+            <EditText
+                android:id="@+id/editAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textSize="20dp"
+                android:text="..."/>
+        </TableRow>
+    </TableLayout>
 
     <Button
         android:id="@+id/creer"

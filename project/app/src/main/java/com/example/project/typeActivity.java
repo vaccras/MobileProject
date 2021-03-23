@@ -13,17 +13,19 @@ public class typeActivity extends AppCompatActivity {
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
-    private String prenom;
-    private String nom;
+    private String prenom ="anonyme";
+    private String nom ="anonyme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_type);
+
+        //recuperation du prenom et du nom de l'utilisateur courant
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
 
-        if (prenom != "anonyme" && nom != "anonyme"){
+        if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
             Button profil = findViewById(R.id.profil);
             profil.setVisibility(View.VISIBLE);
         }
@@ -37,10 +39,6 @@ public class typeActivity extends AppCompatActivity {
 
     public void annuler(View view) {
         super.finish();
-    }
-
-    public void quitter(View view) {
-        System.exit(0);
     }
 
     public void profil(View view) {

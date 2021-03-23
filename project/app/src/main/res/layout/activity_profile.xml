@@ -73,10 +73,20 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/suppr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        android:layout_marginLeft="75dp"
+        android:layout_centerVertical="true"
+        android:onClick="supprime"/>
+
+    <Button
         android:id="@+id/retour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Retour"
-        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="210dp"
         android:onClick="retour"/>
 </RelativeLayout>

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Créer"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_above="@+id/culture"
         android:onClick="CreerCompte"/>
 
@@ -37,8 +37,9 @@
         android:layout_height="wrap_content"
         android:text="Annuler"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_above="@+id/culture"
         android:onClick="Annuler"/>
+
 
 </RelativeLayout>

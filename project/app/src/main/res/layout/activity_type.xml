@@ -41,13 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Annuler"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:onClick="annuler"/>
 
-    <Button android:id="@+id/quitterr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quitter"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:onClick="quitter"/>
 </RelativeLayout>

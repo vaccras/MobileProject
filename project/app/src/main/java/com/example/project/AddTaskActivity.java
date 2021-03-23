@@ -65,15 +65,21 @@ public class AddTaskActivity extends AppCompatActivity {
         final String sPrenom = editTextPrenom.getText().toString().trim();
         final String sNom = editTextNom.getText().toString().trim();
 
-        final int sAge = Integer.parseInt(String.valueOf(editTextAge.getText()));
+        final String sAge = String.valueOf(editTextAge.getText().toString());
 
-        if (sAge > 0) {
-            editTextAge.setError("age inferieur à 0");
+        // Vérifier les informations fournies par l'utilisateur
+        if (sAge.isEmpty()) {
+            editTextPrenom.setError("Age necessaire");
+            editTextPrenom.requestFocus();
+            return;
+        }
+
+        if (Integer.parseInt(sAge) <= 0) {
+            editTextAge.setError("Age inferieur à 0");
             editTextAge.requestFocus();
             return;
         }
 
-        // Vérifier les informations fournies par l'utilisateur
         if (sPrenom.isEmpty()) {
             editTextPrenom.setError("Prenom necessaire");
             editTextPrenom.requestFocus();
@@ -99,12 +105,10 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 cmpt.setPrenom(sPrenom);
                 cmpt.setNom(sNom);
-                cmpt.setAge(sAge);
+                cmpt.setAge(Integer.parseInt(sAge));
 
                 // adding to database
-                mDb.getAppDatabase()
-                        .compteDao()
-                        .insert(cmpt);
+                mDb.getAppDatabase().compteDao().insert(cmpt);
 
                 return cmpt;
             }
