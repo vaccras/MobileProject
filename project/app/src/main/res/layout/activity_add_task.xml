@@ -29,7 +29,7 @@
                 android:text="Prenom : " />
             <EditText
                 android:id="@+id/editPrenom"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:text=""/>
@@ -43,10 +43,10 @@
                 android:text="Nom : " />
             <EditText
                 android:id="@+id/editNom"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
-                android:text="..."/>
+                android:text=""/>
         </TableRow>
 
         <TableRow>
@@ -57,11 +57,11 @@
                 android:text="Age : " />
             <EditText
                 android:id="@+id/editAge"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:textSize="20dp"
-                android:text="..."/>
+                android:text=""/>
         </TableRow>
     </TableLayout>
 

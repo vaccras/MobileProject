@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -93,7 +94,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                 // Quand la tache est créée, on arrête l'activité AddTaskActivity (on l'enleve de la pile d'activités)
                 setResult(RESULT_OK);
-                finish();
+                Intent intent = new Intent(ProfileActivity.this, compteActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+                startActivity(intent);
                 Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_LONG).show();
             }
         }

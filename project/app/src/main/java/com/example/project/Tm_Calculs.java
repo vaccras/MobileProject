@@ -17,8 +17,8 @@ import java.util.ArrayList;
 public class Tm_Calculs extends AppCompatActivity {
 
 
-    public static final String TABLE_CHOISIE = "";
-    public static final String REPONSE = "";
+    public static final String TABLE_CHOISIE = "TABLE";
+    public static final String REPONSE = "REPONSE";
     public int increment = 0 ;
     public int keyTampon = 0 ;
     LinearLayout linear;
@@ -42,16 +42,20 @@ public class Tm_Calculs extends AppCompatActivity {
         linear = findViewById(R.id.linear);
 
         //Récupération de la table choisie par l'utilisateur
-        table_choisie = getIntent().getIntExtra(TABLE_CHOISIE,0);
+        table_choisie = Integer.parseInt(getIntent().getStringExtra(TABLE_CHOISIE));
         reponses = getIntent().getIntegerArrayListExtra(REPONSE);
-        Log.i("verif2", String.valueOf(table_choisie));
+
         linearTMP = new LinearLayout(this);
         calcul = new TextView(this);
         resultat = new EditText(this);
+
         resultat.setInputType(InputType.TYPE_CLASS_NUMBER);
         //resultat.setHint("?");
         resultat.setGravity(Gravity.CENTER);
         calcul.setGravity(Gravity.CENTER);
+        calcul.setTextSize(50);
+        resultat.setTextSize(50);
+        //resultat.setInputType(Integer.parseInt("numberPassword"));
         linearTMP.addView(calcul);
         linearTMP.addView(resultat);
         linear.addView(linearTMP);
@@ -66,12 +70,12 @@ public class Tm_Calculs extends AppCompatActivity {
         linearTMP.setGravity(Gravity.CENTER);
         if (increment<=12){
 
-            calcul.setText(increment + " x " + table_choisie + " = ");
+            calcul.setText(reponses.get(increment)/table_choisie + " x " + table_choisie + " = ");
             resultat.setText("");
             resultat.setOnKeyListener(new View.OnKeyListener() {
                 @Override
                 public boolean onKey(View v, int keyCode, KeyEvent event) {
-                    if (event.getAction()==KeyEvent.ACTION_DOWN){
+                    if (event.getAction()==KeyEvent.KEYCODE_1){
                         try {
 
                             onKeyUp();
