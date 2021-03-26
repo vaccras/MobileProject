@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".TableMultipActivity"
+android:orientation="vertical"
+android:gravity="center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Choisis ta table de multiplication"
+            android:gravity="center"
+            android:paddingTop="50px"
+            android:textSize="70px"
+            />
+
+        <NumberPicker
+            android:id="@+id/TM_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/TM_ordre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lancer dans l'ordre"
+            android:onClick="TM_lanceTables"/>
+        <Button
+            android:id="@+id/TM_desordre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lancer dans le désordre"
+            android:onClick="TM_lanceTables"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

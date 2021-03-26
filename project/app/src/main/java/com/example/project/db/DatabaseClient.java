@@ -54,6 +54,9 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Romain\", \"Favier\",8,15,10,3);");
             db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Cloé\", \"Dupuy\",9,5,10,20);");
 
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Le bon roi Charlemagne\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Charle Martel\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",732,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jeanne pucelle d'Orléans\", \"En qu'elle année à t-elle bouté les rosebeef hors de notre sainte france\",6,\"Quand à t-il été couronné\");");
         }
     };
 }

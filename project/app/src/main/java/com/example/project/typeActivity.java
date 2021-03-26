@@ -32,6 +32,10 @@ public class typeActivity extends AppCompatActivity {
     }
 
     public void MathActivity(View view) {
+
+        Intent intent = new Intent(this, TableMultipActivity.class);
+        startActivity(intent);
+
     }
 
     public void CultureActivity(View view) {
