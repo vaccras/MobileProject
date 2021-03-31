@@ -4,22 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.NumberPicker;
 import java.util.Collections;
-import android.widget.NumberPicker;
 
 import java.util.ArrayList;
 
 public class TableMultipActivity extends AppCompatActivity {
+    public static final String PRENOM_KEY = "PRENOM";
+    public static final String NOM_KEY = "NOM";
 
     NumberPicker table_choisie;
-
-    ArrayList<Integer> reponsesAttendu = new ArrayList<>();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,17 +38,16 @@ public class TableMultipActivity extends AppCompatActivity {
 
     public void TM_lanceTables(View view) {
 
-        Intent intent = new Intent(this, Tm_Calculs.class);
-
-        for (int i =1 ; i<13 ; i++){
-            reponsesAttendu.add(i*(int)table_choisie.getValue());
-        }
+        Intent intent = new Intent(this, Tm_CalculsActivity.class);
+        String reponsesAttendu = "normal";
         if (view.getId()==R.id.TM_desordre){
-            Collections.shuffle(reponsesAttendu);
+            reponsesAttendu = "shuffle";
         }
 
-        intent.putExtra(Tm_Calculs.TABLE_CHOISIE,String.valueOf(table_choisie.getValue()));
-        intent.putExtra(Tm_Calculs.REPONSE, reponsesAttendu);
+        intent.putExtra(Tm_CalculsActivity.TABLE_CHOISIE,String.valueOf(table_choisie.getValue()));
+        intent.putExtra(Tm_CalculsActivity.REPONSE, reponsesAttendu);
+        intent.putExtra(Tm_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(Tm_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         startActivity(intent);
     }
 

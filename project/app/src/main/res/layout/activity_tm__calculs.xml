@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".Tm_Calculs">
+tools:context=".Tm_CalculsActivity">
 
 <LinearLayout
     android:gravity="center"
@@ -31,14 +31,22 @@ tools:context=".Tm_Calculs">
         tools:ignore="MissingConstraints">
 
         <Button
+            android:id="@+id/valider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Valider"
-            android:onClick="viewResultat">
+            android:text="Valider">
         </Button>
 
     </LinearLayout>
-
+    <Button
+        android:id="@+id/quitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:text="quitter"
+        android:onClick="quitter">
+    </Button>
 </LinearLayout>
 
 

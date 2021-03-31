@@ -34,6 +34,8 @@ public class typeActivity extends AppCompatActivity {
     public void MathActivity(View view) {
 
         Intent intent = new Intent(this, TableMultipActivity.class);
+        intent.putExtra(TableMultipActivity.PRENOM_KEY, prenom);
+        intent.putExtra(TableMultipActivity.NOM_KEY, nom);
         startActivity(intent);
 
     }
