@@ -36,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         //recuperation des objects dans le template
         TextView textViewCalcul = findViewById(R.id.txtCalcul);
-        TextView textViewGeometrie = findViewById(R.id.txtGeom);
+        TextView textViewCompare = findViewById(R.id.txtComp);
         TextView textViewCulture = findViewById(R.id.txtCulture);
 
         // Récupération du DatabaseClient
@@ -58,7 +58,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 //mise a jour de l'affichage
                 textViewCalcul.setText(String.valueOf(profile.getCalcul()));
-                textViewGeometrie.setText(String.valueOf(profile.getGeometrie()));
+                textViewCompare.setText(String.valueOf(profile.getComparaison()));
                 textViewCulture.setText(String.valueOf(profile.getCulture()));
             }
         }

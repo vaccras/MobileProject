@@ -107,7 +107,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 cmpt.setNom(sNom);
                 cmpt.setAge(Integer.parseInt(sAge));
                 cmpt.setCalcul(-1);
-                cmpt.setGeometrie(-1);
+                cmpt.setComparaison(-1);
                 cmpt.setCulture(-1);
 
                 // adding to database

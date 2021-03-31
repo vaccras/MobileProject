@@ -50,9 +50,9 @@ public class DatabaseClient {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Louise\", \"Charpe\",6,10,20,8);");
-            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Romain\", \"Favier\",8,15,10,3);");
-            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, geometrie, culture) VALUES(\"Cloé\", \"Dupuy\",9,5,10,20);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, comparaison, culture) VALUES(\"Louise\", \"Charpe\",6,10,20,8);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, comparaison, culture) VALUES(\"Romain\", \"Favier\",8,15,10,3);");
+            db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, comparaison, culture) VALUES(\"Cloé\", \"Dupuy\",9,5,10,20);");
 
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Le bon roi Charlemagne\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Charle Martel\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",732,\"none\");");

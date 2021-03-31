@@ -24,8 +24,8 @@ public class Compte implements Serializable {
     @ColumnInfo(name = "calcul")
     private int calcul;
 
-    @ColumnInfo(name = "geometrie")
-    private int geometrie;
+    @ColumnInfo(name = "comparaison")
+    private int comparaison;
 
     @ColumnInfo(name = "culture")
     private int culture;
@@ -66,11 +66,11 @@ public class Compte implements Serializable {
         this.calcul = calcul;
     }
 
-    public int getGeometrie() {
-        return geometrie;
+    public int getComparaison() {
+        return comparaison;
     }
-    public void setGeometrie(int geometrie) {
-        this.geometrie = geometrie;
+    public void setComparaison(int comparaison) {
+        this.comparaison = comparaison;
     }
 
     public int getCulture() {

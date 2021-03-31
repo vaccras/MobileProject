@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.math;
 
 import android.util.Log;
 
@@ -34,12 +34,8 @@ public class operation {
     public int getBorneSup(){return borneSup;};
 
     public int getResultat(int nb){
-        if (op == "x"){
+        if (op.equals("x")){
             return operande1*operande2.get(nb);
-        }else if(op == "+"){
-            return operande1+operande2.get(nb);
-        }else if(op == "-"){
-            return operande1-operande2.get(nb);
         }else{
             return -1;
         }

@@ -16,26 +16,26 @@ import android.widget.TextView;
 
 import com.example.project.db.Compte;
 import com.example.project.db.DatabaseClient;
+import com.example.project.math.addSous;
+import com.example.project.math.comparaison;
 import com.example.project.math.operation;
 
 import java.util.ArrayList;
 
-public class Tm_CalculsActivity extends AppCompatActivity {
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+public class ComparaisonActivity extends AppCompatActivity {
     // recuperation de l'utilisateur
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
-    //recuperation des choix utilisateurs
-    public static final String TABLE_CHOISIE = "TABLE";
-    public static final String TYPE = "TYPE";
-
     LinearLayout linear;
+
     //choix utilisateur en local
-    private int table_choisie = 0;
-    private String type;
     private String prenom;
     private String nom;
-    private int increment =0;
+    private int increment = 0;
 
     //utilitaire pour la creation d'une vue dynamique
     public LinearLayout linearTMP;
@@ -43,10 +43,10 @@ public class Tm_CalculsActivity extends AppCompatActivity {
     public EditText resultat;
 
     //Tableaux pour ranger les réponses de l'utilisateurs
-    private ArrayList<Integer> repUser = new ArrayList<>();
+    private ArrayList<Boolean> repUser = new ArrayList<>();
 
     //classe operation permettant de faciliter les calculs
-    private operation op;
+    private comparaison op;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +56,11 @@ public class Tm_CalculsActivity extends AppCompatActivity {
         linear = findViewById(R.id.linear);
 
         //Récupération de la table choisie par l'utilisateur et du type de question
-        table_choisie = Integer.parseInt(getIntent().getStringExtra(TABLE_CHOISIE));
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
-        type = getIntent().getStringExtra(TYPE);
 
         //creation de l'operation en fonction de la table choisis et de l'operateur
-        op = new operation(table_choisie,"x",1,12, type);
+        op = new comparaison(1, 12);
 
         //initialisation des objets permettant de construire la vue
         linearTMP = new LinearLayout(this);
@@ -88,30 +86,35 @@ public class Tm_CalculsActivity extends AppCompatActivity {
 
     }
 
-    public void onMaj(){
+    public void onMaj() {
         //
         linearTMP.setOrientation(LinearLayout.HORIZONTAL);
         linearTMP.setGravity(Gravity.CENTER);
         //si on a pas fini l'iteration sur le nombre de calcul souhaiter
-        if(increment < op.getBorneSup()){
-            calcul.setText(String.valueOf(op.getOperande2(increment)) + "x" + String.valueOf(op.getOperande1()) + " = ");
+        if (increment < op.getBorneSup()) {
+            calcul.setText(String.valueOf(op.getOperande1(increment)) + op.getOp(increment) + String.valueOf(op.getOperande2(increment)) + " = ");
             resultat.setText("");
-            Button valider = findViewById(R.id.valider);
-            valider.setOnClickListener(new View.OnClickListener(){
+            //cas ou l'utilisateur clique sur le bouton vrai
+            Button btnVrai = findViewById(R.id.btnVrai);
+            btnVrai.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view){
+                public void onClick(View view) {
                     increment++;
-                    int val;
-                    try {
-                        val = Integer.parseInt(String.valueOf(resultat.getText()));
-                    } catch (Exception e){
-                        val = -1;
-                    }
-                    repUser.add(val);
+                    repUser.add(true);
                     onMaj();
                 }
             });
-        }else{
+            //cas ou l'utilisateur clique sur le bouton faux
+            Button btnFaux = findViewById(R.id.btnFaux);
+            btnFaux.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    increment++;
+                    repUser.add(false);
+                    onMaj();
+                }
+            });
+        } else {
             int resu = op.getAllResult(repUser);
 
             // Récupération du DatabaseClient
@@ -128,13 +131,13 @@ public class Tm_CalculsActivity extends AppCompatActivity {
                     //mise a jour du résultat de calcul
                     int resultat;
 
-                    if (profile.getCalcul() == -1){
-                        resultat = (12-resu)*20/12; // pour la première fois ou l'utilisateur enregistre des données
-                    }else {
-                        resultat = (profile.getCalcul() + (12-resu)*20/12) /2;
+                    if (profile.getComparaison() == -1) {
+                        resultat = (12 - resu) * 20 / 12; // pour la première fois ou l'utilisateur enregistre des données
+                    } else {
+                        resultat = (profile.getComparaison() + (12 - resu) * 20 / 12) / 2;
                     }
 
-                    profile.setCalcul(resultat);
+                    profile.setComparaison(resultat);
                     //mise à jour du compte
                     mDb.getAppDatabase().compteDao().update(profile);
                     return profile;
@@ -157,9 +160,8 @@ public class Tm_CalculsActivity extends AppCompatActivity {
             intent.putExtra(resultatMathActivity.REPONSE, String.valueOf(resu));
             intent.putExtra(resultatMathActivity.PRENOM_KEY, prenom);
             intent.putExtra(resultatMathActivity.NOM_KEY, nom);
-            intent.putExtra(resultatMathActivity.TYPE_KEY, "x");
+            intent.putExtra(resultatMathActivity.TYPE_KEY, "=");
             startActivity(intent);
         }
     }
 }
-

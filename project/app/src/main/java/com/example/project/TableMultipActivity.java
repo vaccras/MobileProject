@@ -39,13 +39,13 @@ public class TableMultipActivity extends AppCompatActivity {
     public void TM_lanceTables(View view) {
 
         Intent intent = new Intent(this, Tm_CalculsActivity.class);
-        String reponsesAttendu = "normal";
+        String type = "normal";
         if (view.getId()==R.id.TM_desordre){
-            reponsesAttendu = "shuffle";
+            type = "shuffle";
         }
 
         intent.putExtra(Tm_CalculsActivity.TABLE_CHOISIE,String.valueOf(table_choisie.getValue()));
-        intent.putExtra(Tm_CalculsActivity.REPONSE, reponsesAttendu);
+        intent.putExtra(Tm_CalculsActivity.TYPE, type);
         intent.putExtra(Tm_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
         intent.putExtra(Tm_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         startActivity(intent);
