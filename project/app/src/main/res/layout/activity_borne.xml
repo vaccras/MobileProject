@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BorneActivity">
+    tools:context=".BorneActivity"
+    android:background="@drawable/bulle">
 
     <TextView
         android:layout_width="wrap_content"
@@ -40,8 +41,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Centaine"
-        android:layout_centerInParent="true"
+        android:layout_above="@+id/infini"
         android:onClick="centaine"/>
+
+    <Button
+        android:id="@+id/infini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="inifini"
+        android:layout_centerInParent="true"
+        android:onClick="infini"/>
 
     <Button
         android:layout_width="wrap_content"

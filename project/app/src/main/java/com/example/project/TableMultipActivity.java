@@ -15,6 +15,7 @@ public class TableMultipActivity extends AppCompatActivity {
     public static final String NOM_KEY = "NOM";
 
     NumberPicker table_choisie;
+    String table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +38,19 @@ public class TableMultipActivity extends AppCompatActivity {
     };
 
     public void TM_lanceTables(View view) {
-
         Intent intent = new Intent(this, Tm_CalculsActivity.class);
         String type = "normal";
         if (view.getId()==R.id.TM_desordre){
             type = "shuffle";
+            table = String.valueOf(table_choisie.getValue());
+        } else if (view.getId()==R.id.TM_infini){
+            type = "infini";
+            table = "1";
+        } else {
+            table = String.valueOf(table_choisie.getValue());
         }
 
-        intent.putExtra(Tm_CalculsActivity.TABLE_CHOISIE,String.valueOf(table_choisie.getValue()));
+        intent.putExtra(Tm_CalculsActivity.TABLE_CHOISIE,table);
         intent.putExtra(Tm_CalculsActivity.TYPE, type);
         intent.putExtra(Tm_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
         intent.putExtra(Tm_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));

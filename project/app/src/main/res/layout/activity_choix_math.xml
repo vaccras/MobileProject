@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".choixMathActivity">
+    tools:context=".choixMathActivity"
+    android:background="@drawable/bulle">
 
     <Button
         android:id="@+id/mult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="x"
-        android:textSize="30dp"
+        android:textSize="18dp"
         android:layout_above="@+id/add"
         android:layout_marginLeft="100dp"
         android:onClick="mult"/>
@@ -41,7 +42,7 @@
         android:id="@+id/comp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="="
+        android:text=""
         android:layout_centerInParent="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="100dp"

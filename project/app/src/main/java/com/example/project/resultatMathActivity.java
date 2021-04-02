@@ -12,6 +12,7 @@ public class resultatMathActivity extends AppCompatActivity {
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
     public static final String TYPE_KEY = "TYPE";
+    public static final String BORNE = "BORNE";
 
     private String prenom;
     private String nom;
@@ -23,23 +24,24 @@ public class resultatMathActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resultat_math);
 
         int nbError = Integer.parseInt(getIntent().getStringExtra(REPONSE));
+        int borne = Integer.parseInt(getIntent().getStringExtra(BORNE));
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
         type = getIntent().getStringExtra(TYPE_KEY);
 
         TextView fel = findViewById(R.id.felicitation);
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
-            if(nbError < 4){
+            if(nbError < borne/3){
                 fel.setText("Felicitation " + prenom + " !!");
-            }else if (nbError > 4 && nbError < 8){
+            }else if (nbError > borne/3 && nbError < borne/3*2){
                 fel.setText("Continue comme sa " + prenom + " !!");
             }else{
                 fel.setText("Ne te décourage pas " + prenom + " !!");
             }
         } else{
-            if(nbError < 4){
+            if(nbError < borne/3){
                 fel.setText("Felicitation !!");
-            }else if (nbError > 4 && nbError < 8){
+            }else if (nbError > borne/3 && nbError < borne/3*2){
                 fel.setText("Continue comme sa !!");
             }else{
                 fel.setText("Ne te décourage pas !!");
@@ -47,7 +49,7 @@ public class resultatMathActivity extends AppCompatActivity {
         }
 
         TextView viewErreur = findViewById(R.id.nbErreur);
-        viewErreur.setText("Vous avez fait " + nbError + " erreur.");
+        viewErreur.setText("Vous avez fait " + nbError + " erreur sur " + borne +" !");
     }
 
     public void rejouer(View view) {

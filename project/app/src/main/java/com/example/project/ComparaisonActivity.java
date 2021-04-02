@@ -5,20 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.project.db.Compte;
 import com.example.project.db.DatabaseClient;
-import com.example.project.math.addSous;
 import com.example.project.math.comparaison;
-import com.example.project.math.operation;
 
 import java.util.ArrayList;
 
@@ -69,7 +64,7 @@ public class ComparaisonActivity extends AppCompatActivity {
     public void onMaj() {
         //si on a pas fini l'iteration sur le nombre de calcul souhaiter
         if (increment < op.getBorneSup()) {
-            calcul.setText(String.valueOf(op.getOperande1(increment)) + op.getOp(increment) + String.valueOf(op.getOperande2(increment)));
+            calcul.setText(String.valueOf(op.getOperande1(increment)) + " " + op.getOp(increment) + " " + String.valueOf(op.getOperande2(increment)));
             //cas ou l'utilisateur clique sur le bouton vrai
             Button btnVrai = findViewById(R.id.btnVrai);
             Log.i("TAG", String.valueOf(btnVrai));
@@ -138,6 +133,7 @@ public class ComparaisonActivity extends AppCompatActivity {
             intent.putExtra(resultatMathActivity.PRENOM_KEY, prenom);
             intent.putExtra(resultatMathActivity.NOM_KEY, nom);
             intent.putExtra(resultatMathActivity.TYPE_KEY, "=");
+            intent.putExtra(resultatMathActivity.BORNE, String.valueOf(increment));
             startActivity(intent);
         }
     }

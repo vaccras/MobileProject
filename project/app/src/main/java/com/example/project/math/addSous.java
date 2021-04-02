@@ -3,6 +3,7 @@ package com.example.project.math;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static java.lang.Math.abs;
 
@@ -17,7 +18,7 @@ public class addSous {
     private int Min = 0;
     private int Max;
 
-    public addSous(String operateur, int inf, int sup, String type) {
+    public addSous(String operateur, int inf, int sup, String type, int mult) {
         op = operateur;
         borneInf = inf;
         borneSup = sup;
@@ -28,6 +29,21 @@ public class addSous {
             Max = 100;
         }else if(type.equals("centaine")){
             Max = 1000;
+        }else if(type.equals("infini") && mult == -1){
+            Max = 50;
+            borneSup = 200;
+        } else if (type.equals("infini") && mult == 1){
+            Max = 10;
+            borneSup = 200;
+        } else {
+            for (int i = borneInf; i <= borneSup; i++){
+                operande2.add(i);
+                operande1.add(mult);
+            }
+
+            if (type.equals("shuffle")){
+                Collections.shuffle(operande2);
+            }
         }
         
         //initialisation des deux operande
@@ -42,7 +58,9 @@ public class addSous {
             return operande1.get(nb)+operande2.get(nb);
         }else if(op.equals("-")){
             return operande1.get(nb)-operande2.get(nb);
-        }else{
+        }else if (op.equals("x")){
+            return operande1.get(nb)*operande2.get(nb);
+        } else{
             return -1;
         }
     };
@@ -51,9 +69,9 @@ public class addSous {
         return resu == abs(getResultat(nb));
     }
 
-    public int getAllResult(ArrayList<Integer> resu){
+    public int getAllResult(ArrayList<Integer> resu, int borne){
         int nb = 0;
-        for (int i = 0; i < borneSup; i++){
+        for (int i = 0; i < borne; i++){
             if (!isEgual(resu.get(i),i)){
                 nb++;
             }

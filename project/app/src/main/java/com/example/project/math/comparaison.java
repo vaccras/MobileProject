@@ -8,7 +8,7 @@ public class comparaison {
     private ArrayList<Integer> operande1 = new ArrayList<>();
     private ArrayList<Integer> operande2 = new ArrayList<>();
     private ArrayList<String> op = new ArrayList<String>();
-    private String val[] = {"<",">","="};
+    private String val[] = {"<",">"};
 
     private int borneInf;
     private int borneSup;
@@ -25,7 +25,7 @@ public class comparaison {
         for (int i = borneInf; i <= borneSup; i++) {
             operande1.add(Min + (int)(Math.random() * ((Max - Min) + 1)));
             operande2.add(Min + (int)(Math.random() * ((Max - Min) + 1)));
-            temp = 0 + (int)(Math.random() * ((2 - 0) + 1));
+            temp = 0 + (int)(Math.random() * ((1 - 0) + 1));
             op.add(val[temp]);
         }
     }
@@ -35,9 +35,7 @@ public class comparaison {
             return operande1.get(nb) < operande2.get(nb);
         }else if(op.get(nb).equals(">")){
             return operande1.get(nb) > operande2.get(nb);
-        }else if(op.get(nb).equals("=")){
-            return operande1.get(nb) == operande2.get(nb);
-        }else{
+        }else {
             return false;
         }
     };

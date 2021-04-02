@@ -44,6 +44,15 @@ public class BorneActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void infini(View view) {
+        Intent intent = new Intent(this, As_CalculsActivity.class);
+        intent.putExtra(As_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(As_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        intent.putExtra(As_CalculsActivity.TYPE, getIntent().getStringExtra(TYPE));
+        intent.putExtra(As_CalculsActivity.DIFFICTULTE, "infini");
+        startActivity(intent);
+    }
+
 
     public void retour(View view) {super.finish();}
 }
