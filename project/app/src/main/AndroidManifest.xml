@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-        <activity android:name=".ComparaisonActivity"></activity>
+        <activity android:name=".BorneActivity"></activity>
+        <activity android:name=".AideActivity" />
+        <activity android:name=".ComparaisonActivity" />
         <activity android:name=".As_CalculsActivity" />
         <activity android:name=".choixMathActivity" />
         <activity android:name=".resultatMathActivity" />

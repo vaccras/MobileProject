@@ -30,19 +30,19 @@ public class choixMathActivity extends AppCompatActivity {
 
     public void sous(View view) {
         //intent view soustraction
-        Intent intent = new Intent(this, As_CalculsActivity.class);
-        intent.putExtra(As_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
-        intent.putExtra(As_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
-        intent.putExtra(As_CalculsActivity.TYPE, "-");
+        Intent intent = new Intent(this, BorneActivity.class);
+        intent.putExtra(BorneActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(BorneActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        intent.putExtra(BorneActivity.TYPE, "-");
         startActivity(intent);
     }
 
     public void add(View view) {
         //intent view addition
-        Intent intent = new Intent(this, As_CalculsActivity.class);
-        intent.putExtra(As_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
-        intent.putExtra(As_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
-        intent.putExtra(As_CalculsActivity.TYPE, "+");
+        Intent intent = new Intent(this, BorneActivity.class);
+        intent.putExtra(BorneActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(BorneActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        intent.putExtra(BorneActivity.TYPE, "+");
         startActivity(intent);
     }
 
@@ -50,6 +50,14 @@ public class choixMathActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TableMultipActivity.class);
         intent.putExtra(TableMultipActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
         intent.putExtra(TableMultipActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        startActivity(intent);
+    }
+
+    public void aide(View view) {
+        Intent intent = new Intent(this, AideActivity.class);
+        intent.putExtra(AideActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(AideActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        intent.putExtra(AideActivity.TYPE, "math");
         startActivity(intent);
     }
 }

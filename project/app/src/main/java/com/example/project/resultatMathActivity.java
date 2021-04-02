@@ -27,10 +27,25 @@ public class resultatMathActivity extends AppCompatActivity {
         nom = getIntent().getStringExtra(NOM_KEY);
         type = getIntent().getStringExtra(TYPE_KEY);
 
+        TextView fel = findViewById(R.id.felicitation);
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
-            TextView fel = findViewById(R.id.felicitation);
-            fel.setText("Felicitation " + prenom + " !!");
+            if(nbError < 4){
+                fel.setText("Felicitation " + prenom + " !!");
+            }else if (nbError > 4 && nbError < 8){
+                fel.setText("Continue comme sa " + prenom + " !!");
+            }else{
+                fel.setText("Ne te décourage pas " + prenom + " !!");
+            }
+        } else{
+            if(nbError < 4){
+                fel.setText("Felicitation !!");
+            }else if (nbError > 4 && nbError < 8){
+                fel.setText("Continue comme sa !!");
+            }else{
+                fel.setText("Ne te décourage pas !!");
+            }
         }
+
         TextView viewErreur = findViewById(R.id.nbErreur);
         viewErreur.setText("Vous avez fait " + nbError + " erreur.");
     }
@@ -49,10 +64,10 @@ public class resultatMathActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
             startActivity(intent);
         }else{
-            Intent intent = new Intent(this, As_CalculsActivity.class);
-            intent.putExtra(As_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
-            intent.putExtra(As_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
-            intent.putExtra(As_CalculsActivity.TYPE, type);
+            Intent intent = new Intent(this, BorneActivity.class);
+            intent.putExtra(BorneActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+            intent.putExtra(BorneActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+            intent.putExtra(BorneActivity.TYPE, type);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
             startActivity(intent);
         }

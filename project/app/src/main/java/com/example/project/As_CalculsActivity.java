@@ -25,17 +25,17 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 public class As_CalculsActivity extends AppCompatActivity {
-    // recuperation de l'utilisateur
+    // recuperation de l'utilisateur si il n'est pas en anonyme
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
     //recuperation des choix utilisateurs
     public static final String TYPE = "TYPE";
-
-    LinearLayout linear;
+    public static final String DIFFICTULTE = "DIFFICTULTE";
 
     //choix utilisateur en local
     private String type;
+    private String difficulte;
     private String prenom;
     private String nom;
     private int increment = 0;
@@ -59,9 +59,11 @@ public class As_CalculsActivity extends AppCompatActivity {
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
         type = getIntent().getStringExtra(TYPE);
+        difficulte = getIntent().getStringExtra(DIFFICTULTE);
+        Log.i("TAG", difficulte);
 
         //creation de l'operation en fonction de la table choisis et de l'operateur
-        op = new addSous(type, 1, 12);
+        op = new addSous(type, 1, 12, difficulte);
 
         calcul = findViewById(R.id.calcul);
         resultat = findViewById(R.id.resultat);

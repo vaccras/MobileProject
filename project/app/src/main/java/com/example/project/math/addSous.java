@@ -15,13 +15,21 @@ public class addSous {
     private String op;
 
     private int Min = 0;
-    private int Max = 100;
+    private int Max;
 
-    public addSous(String operateur, int inf, int sup) {
+    public addSous(String operateur, int inf, int sup, String type) {
         op = operateur;
         borneInf = inf;
         borneSup = sup;
 
+        if (type.equals("entier")){
+            Max = 10;
+        }else if(type.equals("dizaine")){
+            Max = 100;
+        }else if(type.equals("centaine")){
+            Max = 1000;
+        }
+        
         //initialisation des deux operande
         for (int i = borneInf; i <= borneSup; i++) {
             operande1.add(Min + (int)(Math.random() * ((Max - Min) + 1)));

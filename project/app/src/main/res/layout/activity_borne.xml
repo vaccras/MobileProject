@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BorneActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choix de la difficulté !"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/entier"
+        android:layout_marginBottom="30dp"
+        android:textSize="40dp"/>
+
+    <Button
+        android:id="@+id/entier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entier"
+        android:layout_marginLeft="50dp"
+        android:layout_above="@id/dizaine"
+        android:onClick="entier"/>
+
+    <Button
+        android:id="@+id/dizaine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dizzaine"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/centaine"
+        android:onClick="dizaine"/>
+
+    <Button
+        android:id="@+id/centaine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Centaine"
+        android:layout_centerInParent="true"
+        android:onClick="centaine"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annuler"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="retour"/>
+
+</RelativeLayout>
