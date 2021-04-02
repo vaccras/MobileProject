@@ -42,6 +42,12 @@ public class resultatMathActivity extends AppCompatActivity {
             intent.putExtra(TableMultipActivity.NOM_KEY, nom);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
             startActivity(intent);
+        }else if(type.equals("=")){
+            Intent intent = new Intent(this, ComparaisonActivity.class);
+            intent.putExtra(ComparaisonActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+            intent.putExtra(ComparaisonActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+            startActivity(intent);
         }else{
             Intent intent = new Intent(this, As_CalculsActivity.class);
             intent.putExtra(As_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));

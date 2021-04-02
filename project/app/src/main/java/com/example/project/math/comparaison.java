@@ -31,11 +31,11 @@ public class comparaison {
     }
 
     public boolean getResultat(int nb){
-        if(op.get(Integer.parseInt(val[nb])).equals("<")){
+        if(op.get(nb).equals("<")){
             return operande1.get(nb) < operande2.get(nb);
-        }else if(op.get(Integer.parseInt(val[nb])).equals(">")){
+        }else if(op.get(nb).equals(">")){
             return operande1.get(nb) > operande2.get(nb);
-        }else if(op.get(Integer.parseInt(val[nb])).equals("=")){
+        }else if(op.get(nb).equals("=")){
             return operande1.get(nb) == operande2.get(nb);
         }else{
             return false;

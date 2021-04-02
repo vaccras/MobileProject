@@ -41,7 +41,6 @@ public class As_CalculsActivity extends AppCompatActivity {
     private int increment = 0;
 
     //utilitaire pour la creation d'une vue dynamique
-    public LinearLayout linearTMP;
     public TextView calcul;
     public EditText resultat;
 
@@ -54,9 +53,7 @@ public class As_CalculsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tm__calculs);
-
-        linear = findViewById(R.id.linear);
+        setContentView(R.layout.activity_as__calculs);
 
         //Récupération de la table choisie par l'utilisateur et du type de question
         prenom = getIntent().getStringExtra(PRENOM_KEY);
@@ -66,24 +63,8 @@ public class As_CalculsActivity extends AppCompatActivity {
         //creation de l'operation en fonction de la table choisis et de l'operateur
         op = new addSous(type, 1, 12);
 
-        //initialisation des objets permettant de construire la vue
-        linearTMP = new LinearLayout(this);
-        calcul = new TextView(this);
-        resultat = new EditText(this);
-
-        // mise en place de la vue
-        resultat.setInputType(InputType.TYPE_CLASS_NUMBER);
-        //resultat.setHint("?");
-        resultat.setGravity(Gravity.CENTER);
-        calcul.setGravity(Gravity.CENTER);
-        calcul.setTextSize(50);
-        resultat.setTextSize(50);
-        //resultat.setInputType(Integer.parseInt("numberPassword"));
-
-        //ajout des elements au linearLayout
-        linearTMP.addView(calcul);
-        linearTMP.addView(resultat);
-        linear.addView(linearTMP);
+        calcul = findViewById(R.id.calcul);
+        resultat = findViewById(R.id.resultat);
 
         //permet de mettre a jour l'affichage une fois la réponse obtenue
         onMaj();
@@ -91,9 +72,6 @@ public class As_CalculsActivity extends AppCompatActivity {
     }
 
     public void onMaj() {
-        //
-        linearTMP.setOrientation(LinearLayout.HORIZONTAL);
-        linearTMP.setGravity(Gravity.CENTER);
         //si on a pas fini l'iteration sur le nombre de calcul souhaiter
         if (increment < op.getBorneSup()) {
             int un = max(op.getOperande1(increment), op.getOperande2(increment));
@@ -165,4 +143,7 @@ public class As_CalculsActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void quitter(View view) {super.finish();}
+
 }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tm_CalculsActivity">
+    tools:context=".ComparaisonActivity">
 
     <LinearLayout
         android:gravity="center"
@@ -12,6 +12,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/comparaison"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="comparaison"
+            android:textSize="50dp"/>
 
         <LinearLayout
             android:gravity="center"
@@ -39,4 +45,12 @@
         </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="quitter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="quitter"/>
+
+</RelativeLayout>
