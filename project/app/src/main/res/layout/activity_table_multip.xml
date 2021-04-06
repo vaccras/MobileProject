@@ -38,7 +38,21 @@ android:gravity="center">
             android:layout_height="wrap_content"
             android:text="Lancer dans le désordre"
             android:onClick="TM_lanceTables"/>
+        <Button
+            android:id="@+id/TM_infini"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lancer pour une minute"
+            android:onClick="TM_lanceTables"/>
 
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="annuler"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:onClick="annuler"/>
 
 </RelativeLayout>

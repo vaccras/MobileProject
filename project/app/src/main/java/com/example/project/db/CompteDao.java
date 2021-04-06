@@ -11,14 +11,15 @@ import java.util.List;
 
 @Dao
 public interface CompteDao {
-
+    // selection de l'integraliter des comptes existants
     @Query("SELECT * FROM Compte")
     List<Compte> getAll();
 
+    // selection d'un compte donné en fonction du nom et du prenom
     @Query("SELECT * FROM Compte WHERE prenom LIKE :pr AND nom LIKE :nm LIMIT 1 ")
     Compte findByName(String pr, String nm);
-    //LiveData<Compte> findByName(String pr, String nm);
 
+    // insert, delete, et update pour un Compte donné
     @Insert
     void insert(Compte cmpt);
 

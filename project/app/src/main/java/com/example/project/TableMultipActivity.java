@@ -4,34 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.NumberPicker;
-import java.util.Collections;
-import android.widget.NumberPicker;
-
-import java.util.ArrayList;
 
 public class TableMultipActivity extends AppCompatActivity {
+    // recuperation de l'utilisateur
+    public static final String PRENOM_KEY = "PRENOM";
+    public static final String NOM_KEY = "NOM";
 
-    NumberPicker table_choisie;
-
-    ArrayList<Integer> reponsesAttendu = new ArrayList<>();
-
-
+    // recuperation des informations de la view
+    private NumberPicker table_choisie;
+    private String table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_multip);
 
-
+        // mise en place du numberPicker pour le choix des tables de multiplications (entre 1 et 12)
         table_choisie = findViewById(R.id.TM_picker);
         table_choisie.setMinValue(1);
         table_choisie.setMaxValue(12);
-
-        //table_choisie.setOnValueChangedListener(this::onValueChange);
     }
 
     NumberPicker.OnValueChangeListener onValueListener = new NumberPicker.OnValueChangeListener() {
@@ -42,20 +35,28 @@ public class TableMultipActivity extends AppCompatActivity {
     };
 
     public void TM_lanceTables(View view) {
-
-        Intent intent = new Intent(this, Tm_Calculs.class);
-
-        for (int i =1 ; i<13 ; i++){
-            reponsesAttendu.add(i*(int)table_choisie.getValue());
-        }
+        // recuperation du choix utilisateur
+        String type = "normal";
         if (view.getId()==R.id.TM_desordre){
-            Collections.shuffle(reponsesAttendu);
+            type = "shuffle";
+            table = String.valueOf(table_choisie.getValue());
+        } else if (view.getId()==R.id.TM_infini){
+            type = "infini";
+            table = "1";
+        } else {
+            table = String.valueOf(table_choisie.getValue());
         }
 
-        intent.putExtra(Tm_Calculs.TABLE_CHOISIE,String.valueOf(table_choisie.getValue()));
-        intent.putExtra(Tm_Calculs.REPONSE, reponsesAttendu);
+        // affichage de la vue calcul pour la multiplication
+        Intent intent = new Intent(this, CalculsActivity.class);
+        intent.putExtra(CalculsActivity.TABLE_CHOISIE,table);
+        intent.putExtra(CalculsActivity.TYPE, "x");
+        intent.putExtra(CalculsActivity.DIFFICTULTE, type);
+        intent.putExtra(CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         startActivity(intent);
     }
 
 
+    public void annuler(View view) {super.finish();}
 }

@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 public class Compte implements Serializable {
-
+    //Definition d'un Compte
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -24,13 +24,13 @@ public class Compte implements Serializable {
     @ColumnInfo(name = "calcul")
     private int calcul;
 
-    @ColumnInfo(name = "geometrie")
-    private int geometrie;
+    @ColumnInfo(name = "comparaison")
+    private int comparaison;
 
     @ColumnInfo(name = "culture")
     private int culture;
 
-    /*** Getters and Setters ***/
+    /*** Getters et Setters d'un Compte ***/
     public int getId() {
         return id;
     }
@@ -66,11 +66,11 @@ public class Compte implements Serializable {
         this.calcul = calcul;
     }
 
-    public int getGeometrie() {
-        return geometrie;
+    public int getComparaison() {
+        return comparaison;
     }
-    public void setGeometrie(int geometrie) {
-        this.geometrie = geometrie;
+    public void setComparaison(int comparaison) {
+        this.comparaison = comparaison;
     }
 
     public int getCulture() {

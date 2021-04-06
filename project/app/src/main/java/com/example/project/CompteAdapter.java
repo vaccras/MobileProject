@@ -29,7 +29,7 @@ public class CompteAdapter extends ArrayAdapter<Compte> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        // Récupération de la multiplication
+        // Récupération d'un compte à la position données
         final Compte cmpt = getItem(position);
 
         // Charge le template XML
