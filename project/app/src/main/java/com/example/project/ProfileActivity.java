@@ -18,9 +18,11 @@ import com.example.project.db.DatabaseClient;
 import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
+    // recuperation de l'utilisateur
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
+    // recuperation base de données
     private DatabaseClient mDb;
 
     @Override
@@ -28,9 +30,11 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        //Récupération de l'utilisateur courant
         String prenom = getIntent().getStringExtra(PRENOM_KEY);
         String nom = getIntent().getStringExtra(NOM_KEY);
 
+        //mise à jour affichage en fonction de l'utilisateur
         TextView prenomView = findViewById(R.id.textPrenom);
         prenomView.setText("Profil " + prenom);
 
@@ -48,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             protected Compte doInBackground(Void... voids) {
+                //recupération en base du compte courant
                 Compte profile = mDb.getAppDatabase().compteDao().findByName(prenom, nom);
                 return profile;
             }
@@ -56,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
             protected void onPostExecute(Compte profile) {
                 super.onPostExecute(profile);
 
-                //mise a jour de l'affichage
+                //mise a jour de l'affichage en fonction des données du comptes
                 textViewCalcul.setText(String.valueOf(profile.getCalcul()));
                 textViewCompare.setText(String.valueOf(profile.getComparaison()));
                 textViewCulture.setText(String.valueOf(profile.getCulture()));
@@ -74,6 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void supprime(View view) {
+        // recuperation du compte
         String prenom = getIntent().getStringExtra(PRENOM_KEY);
         String nom = getIntent().getStringExtra(NOM_KEY);
 
@@ -81,8 +87,9 @@ public class ProfileActivity extends AppCompatActivity {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
+                //recupération en base du compte courant
                 Compte profile = mDb.getAppDatabase().compteDao().findByName(prenom, nom);
-                // delete to database
+                // suppression en base du compte courant
                 mDb.getAppDatabase().compteDao().delete(profile);
                 return true;
 
@@ -96,8 +103,8 @@ public class ProfileActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
                 Intent intent = new Intent(ProfileActivity.this, compteActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Delete", Toast.LENGTH_LONG).show();
+                startActivity(intent); // on revient à l'activiter compte (menu)
+                Toast.makeText(getApplicationContext(), "Supprime", Toast.LENGTH_LONG).show();
             }
         }
 

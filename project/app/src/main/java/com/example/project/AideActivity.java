@@ -19,15 +19,18 @@ public class AideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aide);
 
+        //recuperation des valeurs
         String prenom = getIntent().getStringExtra(PRENOM_KEY);
         String nom = getIntent().getStringExtra(NOM_KEY);
         String type = getIntent().getStringExtra(TYPE);
 
+        //verification du type de jeu pour afficher le nom
         if(!prenom.equals("anonyme") && !nom.equals("anonyme") ){
             TextView accueil = findViewById(R.id.acceuil);
             accueil.setText("Bonjour "+prenom + " !");
         }
 
+        //mise à jour de l'explication en fonction des math ou de l'histoire
         TextView description = findViewById(R.id.explication);
         if (type.equals("math")){
             description.setText("Tu as accés à 2 type d'exercices. La comparaison ou tu devras cliquer sur vrai ou faux suivant la question donné (ex: 60<5 est faux)." +

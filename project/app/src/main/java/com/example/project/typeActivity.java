@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class typeActivity extends AppCompatActivity {
+    //recuperation information utilisateur
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
@@ -25,6 +26,7 @@ public class typeActivity extends AppCompatActivity {
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
 
+        // rendre le bouton profile accessible si l'utilisateur n'est pas anonyme
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
             Button profil = findViewById(R.id.profil);
             profil.setVisibility(View.VISIBLE);
@@ -32,7 +34,7 @@ public class typeActivity extends AppCompatActivity {
     }
 
     public void MathActivity(View view) {
-
+        // lancer l'activity math
         Intent intent = new Intent(this, choixMathActivity.class);
         intent.putExtra(TableMultipActivity.PRENOM_KEY, prenom);
         intent.putExtra(TableMultipActivity.NOM_KEY, nom);
@@ -48,6 +50,7 @@ public class typeActivity extends AppCompatActivity {
     }
 
     public void profil(View view) {
+        // lancer l'activity profile
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
         intent.putExtra(ProfileActivity.NOM_KEY, nom);

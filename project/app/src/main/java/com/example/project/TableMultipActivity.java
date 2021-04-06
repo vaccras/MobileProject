@@ -6,28 +6,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.NumberPicker;
-import java.util.Collections;
-
-import java.util.ArrayList;
 
 public class TableMultipActivity extends AppCompatActivity {
+    // recuperation de l'utilisateur
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
-    NumberPicker table_choisie;
-    String table;
+    // recuperation des informations de la view
+    private NumberPicker table_choisie;
+    private String table;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_multip);
 
-
+        // mise en place du numberPicker pour le choix des tables de multiplications (entre 1 et 12)
         table_choisie = findViewById(R.id.TM_picker);
         table_choisie.setMinValue(1);
         table_choisie.setMaxValue(12);
-
-        //table_choisie.setOnValueChangedListener(this::onValueChange);
     }
 
     NumberPicker.OnValueChangeListener onValueListener = new NumberPicker.OnValueChangeListener() {
@@ -38,7 +35,7 @@ public class TableMultipActivity extends AppCompatActivity {
     };
 
     public void TM_lanceTables(View view) {
-        Intent intent = new Intent(this, Tm_CalculsActivity.class);
+        // recuperation du choix utilisateur
         String type = "normal";
         if (view.getId()==R.id.TM_desordre){
             type = "shuffle";
@@ -50,12 +47,16 @@ public class TableMultipActivity extends AppCompatActivity {
             table = String.valueOf(table_choisie.getValue());
         }
 
-        intent.putExtra(Tm_CalculsActivity.TABLE_CHOISIE,table);
-        intent.putExtra(Tm_CalculsActivity.TYPE, type);
-        intent.putExtra(Tm_CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
-        intent.putExtra(Tm_CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+        // affichage de la vue calcul pour la multiplication
+        Intent intent = new Intent(this, CalculsActivity.class);
+        intent.putExtra(CalculsActivity.TABLE_CHOISIE,table);
+        intent.putExtra(CalculsActivity.TYPE, "x");
+        intent.putExtra(CalculsActivity.DIFFICTULTE, type);
+        intent.putExtra(CalculsActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+        intent.putExtra(CalculsActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
         startActivity(intent);
     }
 
 
+    public void annuler(View view) {super.finish();}
 }

@@ -24,7 +24,7 @@
         android:text="Entier"
         android:layout_marginLeft="50dp"
         android:layout_above="@id/dizaine"
-        android:onClick="entier"/>
+        android:onClick="lanceTables"/>
 
     <Button
         android:id="@+id/dizaine"
@@ -34,7 +34,7 @@
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/centaine"
-        android:onClick="dizaine"/>
+        android:onClick="lanceTables"/>
 
     <Button
         android:id="@+id/centaine"
@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Centaine"
         android:layout_above="@+id/infini"
-        android:onClick="centaine"/>
+        android:onClick="lanceTables"/>
 
     <Button
         android:id="@+id/infini"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="inifini"
         android:layout_centerInParent="true"
-        android:onClick="infini"/>
+        android:onClick="lanceTables"/>
 
     <Button
         android:layout_width="wrap_content"

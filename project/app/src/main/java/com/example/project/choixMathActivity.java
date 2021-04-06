@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class choixMathActivity extends AppCompatActivity {
+    //recuperation des informations utilisateur
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
 
@@ -16,6 +17,7 @@ public class choixMathActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_math);
 
+        //affichage du bouton comparaison
         Button btn = findViewById(R.id.comp);
         btn.setText("><");
     }
@@ -51,6 +53,7 @@ public class choixMathActivity extends AppCompatActivity {
     }
 
     public void mult(View view) {
+        //intent view mutliplication
         Intent intent = new Intent(this, TableMultipActivity.class);
         intent.putExtra(TableMultipActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
         intent.putExtra(TableMultipActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
@@ -58,6 +61,7 @@ public class choixMathActivity extends AppCompatActivity {
     }
 
     public void aide(View view) {
+        //intent view aide
         Intent intent = new Intent(this, AideActivity.class);
         intent.putExtra(AideActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
         intent.putExtra(AideActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));

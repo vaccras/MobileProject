@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 public class Compte implements Serializable {
-
+    //Definition d'un Compte
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -30,7 +30,7 @@ public class Compte implements Serializable {
     @ColumnInfo(name = "culture")
     private int culture;
 
-    /*** Getters and Setters ***/
+    /*** Getters et Setters d'un Compte ***/
     public int getId() {
         return id;
     }

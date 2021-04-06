@@ -12,7 +12,7 @@
         <activity android:name=".BorneActivity"></activity>
         <activity android:name=".AideActivity" />
         <activity android:name=".ComparaisonActivity" />
-        <activity android:name=".As_CalculsActivity" />
+        <activity android:name=".CalculsActivity" />
         <activity android:name=".choixMathActivity" />
         <activity android:name=".resultatMathActivity" />
         <activity android:name=".HistActivity" />
@@ -21,7 +21,6 @@
         <activity android:name=".compteActivity" />
         <activity android:name=".AddTaskActivity" />
         <activity android:name=".TableMultipActivity" />
-        <activity android:name=".Tm_CalculsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

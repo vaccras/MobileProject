@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class compteActivity extends AppCompatActivity {
-    //public final static int ANONYME_REQUEST = 0;
-
+    //DATA
     private DatabaseClient mDb;
     private CompteAdapter adapter;
 
@@ -52,6 +51,7 @@ public class compteActivity extends AppCompatActivity {
                 // Message
                 Toast.makeText(compteActivity.this, "Click : " + cmpt.getPrenom(), Toast.LENGTH_SHORT).show();
 
+                //affichage de la page suivante en passant les informations
                 nextPage(cmpt.getPrenom(), cmpt.getNom(), view);
             }
         });
@@ -60,12 +60,12 @@ public class compteActivity extends AppCompatActivity {
     }
 
     private void getComptes() {
-        ///////////////////////
         // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
         class GetTasks extends AsyncTask<Void, Void, List<Compte>> {
 
             @Override
             protected List<Compte> doInBackground(Void... voids) {
+                //recuperation de la liste de tout les comptes existants
                 List<Compte> compteList = mDb.getAppDatabase().compteDao().getAll();
                 return compteList;
             }
@@ -78,12 +78,11 @@ public class compteActivity extends AppCompatActivity {
                 adapter.clear();
                 adapter.addAll(cmpts);
 
-                // Now, notify the adapter of the change in source
+                // notifier l'adapter
                 adapter.notifyDataSetChanged();
             }
         }
 
-        //////////////////////////
         // IMPORTANT bien penser à executer la demande asynchrone
         // Création d'un objet de type GetTasks et execution de la demande asynchrone
         GetTasks gt = new GetTasks();
@@ -103,28 +102,25 @@ public class compteActivity extends AppCompatActivity {
     }
 
     public void AnonymeActivity(View view) {
-        //jouer en anonyme -> pas de compte de score accés restreint ?
+        //jouer en anonyme -> pas de mise a jour de compte de score
         Intent intent = new Intent(this, typeActivity.class);
         intent.putExtra(typeActivity.PRENOM_KEY, "anonyme");
         intent.putExtra(typeActivity.NOM_KEY, "anonyme");
-        //startActivityForResult(intent, ANONYME_REQUEST);
         startActivity(intent);
     }
 
     public void nextPage(String prenom, String nom, View view){
+        //jouer avec un utilisateur
         Intent intent = new Intent(this, typeActivity.class);
         intent.putExtra(typeActivity.PRENOM_KEY, prenom);
         intent.putExtra(typeActivity.NOM_KEY, nom);
-
         startActivity(intent);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        // Mise à jour des comptes après création par exemple
+        // Mise à jour des comptes après création
         getComptes();
-
     }
 }

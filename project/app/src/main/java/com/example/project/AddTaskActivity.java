@@ -43,7 +43,7 @@ public class AddTaskActivity extends AppCompatActivity {
         creer = findViewById(R.id.creer);
         annuler = findViewById(R.id.annuler);
 
-        // Associer un événement au bouton save
+        // Associer un événement au bouton créer
         creer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +51,7 @@ public class AddTaskActivity extends AppCompatActivity {
             }
         });
 
+        // Associer un événement au bouton annuler
         annuler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,7 +61,6 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     private void saveCompte() {
-
         // Récupérer les informations contenues dans les vues
         final String sPrenom = editTextPrenom.getText().toString().trim();
         final String sNom = editTextNom.getText().toString().trim();
@@ -100,9 +100,9 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             protected Compte doInBackground(Void... voids) {
 
-                // creating a task
+                // création d'un compte
                 Compte cmpt = new Compte();
-
+                //ajout des information connu pour ce compte
                 cmpt.setPrenom(sPrenom);
                 cmpt.setNom(sNom);
                 cmpt.setAge(Integer.parseInt(sAge));
@@ -110,7 +110,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 cmpt.setComparaison(-1);
                 cmpt.setCulture(-1);
 
-                // adding to database
+                // ajout à la base de donnée
                 mDb.getAppDatabase().compteDao().insert(cmpt);
 
                 return cmpt;
