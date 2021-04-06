@@ -39,6 +39,8 @@ public class typeActivity extends AppCompatActivity {
     }
 
     public void CultureActivity(View view) {
+        Intent intent = new Intent(this, HistActivity.class);
+        startActivity(intent);
     }
 
     public void annuler(View view) {

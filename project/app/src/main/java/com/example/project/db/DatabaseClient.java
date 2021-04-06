@@ -57,6 +57,16 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Le bon roi Charlemagne\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Charle Martel\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",732,\"none\");");
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jeanne pucelle d'Orléans\", \"En qu'elle année à t-elle bouté les rosebeef hors de notre sainte france\",6,\"Quand à t-il été couronné\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"ssss\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"qqqq\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"ggggg\", \"En qu'elle année à t-elle bouté les rosebeef hors de notre sainte france\",800,\"Quand à t-il été couronné\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"zzzzzzzz\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"rrrrrrl\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"hhhhhhhhhs\", \"En qu'elle année à t-elle bouté les rosebeef hors de notre sainte france\",800,\"Quand à t-il été couronné\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"yyyyyyyyyyyyyyyyyy\", \"En qu'elle année à t-il été couronné\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\";;;;;;;;;;;;;;;;\", \"En qu'elle année à t-il bouté les métèques hors de notre sainte france\",800,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jbbbbbbbbbbbbbb\", \"En qu'elle année à t-elle bouté les rosebeef hors de notre sainte france\",800,\"Quand à t-il été couronné\");");
+
         }
     };
 }
