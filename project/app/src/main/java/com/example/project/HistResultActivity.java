@@ -27,10 +27,12 @@ public class HistResultActivity extends AppCompatActivity {
     private DatabaseClient mDb;
     private List<Histoire> histoires;
 
+    private int score=0;//sur 10
+
     public ArrayList<Integer> reponsesUser = new ArrayList<>();
     public ArrayList<Integer> question = new ArrayList<>();
 
-    public TableLayout Tableau;
+    public LinearLayout Tableau;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class HistResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hist_result);
 
         Tableau = findViewById(R.id.HIST_Tabl);
+        Tableau.setOrientation(LinearLayout.VERTICAL);
 
         //Récupération des réponses donnée par l'utilisateur et des question liées
         question = (ArrayList<Integer>) getIntent().getSerializableExtra("question");
@@ -71,7 +74,7 @@ public class HistResultActivity extends AppCompatActivity {
     public void maj() {
 
         System.out.println(histoires);
-        TableRow temp = new TableRow(this);;
+        LinearLayout temp = new LinearLayout(this);;
         boolean col = true;
 
         for (int num : question) {
@@ -89,9 +92,13 @@ public class HistResultActivity extends AppCompatActivity {
             if (reponsesUser.get(num)>=9999){
                 resp.setText("pas de réponses");
             }else {
-                resp.setText("votre réponse"+reponsesUser.get(num));
+                resp.setText("votre réponse : "+reponsesUser.get(num));
             }
-            respAtt.setText("attendue"+hist.getReponse());
+            respAtt.setText("attendue : "+hist.getReponse());
+
+            if(reponsesUser.get(num)==hist.getReponse()){
+                score++;
+            }
 
             current.addView(intitule);
             current.addView(quest);
@@ -100,12 +107,17 @@ public class HistResultActivity extends AppCompatActivity {
             current.setOrientation(LinearLayout.VERTICAL);
             current.setGravity(Gravity.CENTER);
 
+
             if (col){
-                temp = new TableRow(this);
+                temp = new LinearLayout(this);
+                temp.setOrientation(LinearLayout.HORIZONTAL);
                 temp.addView(current);
-                Tableau.addView(temp);
+
+                System.out.println("passage A");
+
             }else{
                 temp.addView(current);
+                Tableau.addView(temp);System.out.println("passage B");
             }
             col=!col;
 

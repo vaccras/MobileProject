@@ -6,11 +6,12 @@
     android:gravity="center"
     tools:context=".HistResultActivity">
 
-    <TableLayout
+    <LinearLayout
         android:id="@+id/HIST_Tabl"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    </TableLayout>
+    </LinearLayout>
 
 </LinearLayout>

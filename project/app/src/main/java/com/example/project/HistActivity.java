@@ -22,7 +22,7 @@ public class HistActivity extends AppCompatActivity {
 
     private DatabaseClient mDb;
     private Integer reponse_courante=0;
-    private int position=-1;
+    private int position=0;
     private TextView textViewIntitu;
     private TextView textViewQuestion;
     private TextView textViewAide;
@@ -39,8 +39,8 @@ public class HistActivity extends AppCompatActivity {
         textViewAide = (TextView) findViewById(R.id.HIST_indice);
         // Lier l'adapter au listView
         mDb = DatabaseClient.getInstance(getApplicationContext());
-        questions = new ArrayList<>(10);
-        Areponses = new ArrayList<>(10);
+        questions = new ArrayList<>();
+        Areponses = new ArrayList<>();
         for (int i = 0 ; i<10; i++){
             questions.add(i);
         }
@@ -50,26 +50,27 @@ public class HistActivity extends AppCompatActivity {
         creation = false;
     }
 
-    public void onEnter(View view) {
-        position++;
-        class GetHist extends AsyncTask<Void, Void, List<Histoire>> {
-            @Override
-            protected List<Histoire> doInBackground(Void... voids) {
-                List<Histoire> listExo = mDb.getAppDatabase().histoireDao().getAll();
-                return listExo;
-            }
-
-            @Override
-            protected void onPostExecute(List<Histoire> histoires) {
-                super.onPostExecute(histoires);
-
-                textViewIntitu.setText(histoires.get(questions.get(position)).getIntitulee());
-                textViewQuestion.setText(histoires.get(questions.get(position)).getQuestion());
-                textViewAide.setText(histoires.get(questions.get(position)).getAide());
-                reponse_courante = histoires.get(questions.get(position)).getReponse();
-
-            }
+    class GetHist extends AsyncTask<Void, Void, List<Histoire>> {
+        @Override
+        protected List<Histoire> doInBackground(Void... voids) {
+            List<Histoire> listExo = mDb.getAppDatabase().histoireDao().getAll();
+            return listExo;
         }
+
+        @Override
+        protected void onPostExecute(List<Histoire> histoires) {
+            super.onPostExecute(histoires);
+
+            textViewIntitu.setText(histoires.get(questions.get(position)).getIntitulee());
+            textViewQuestion.setText(histoires.get(questions.get(position)).getQuestion());
+            textViewAide.setText(histoires.get(questions.get(position)).getAide());
+            reponse_courante = histoires.get(questions.get(position)).getReponse();
+
+        }
+    }
+
+    public void onEnter(View view) {
+
 
 
         GetHist gt = new GetHist();
@@ -79,15 +80,17 @@ public class HistActivity extends AppCompatActivity {
 
         if(creation==false) {
 
-
-            if (reponse.getText().toString().equals(String.valueOf(reponse_courante))) {
-                Areponses.add(Integer.valueOf(reponse.getText().toString()));
-            } else {
+            System.out.println(reponse.getText().length() + "  sdfdddddddddddddddddddddd");
+            if (reponse.getText().length()==0) {
                 Areponses.add(9999);
+            } else {
+                Areponses.add(Integer.valueOf(reponse.getText().toString()));
             }
+            position++;
         }
 
         if (position>=10){
+            position=0;
             System.out.println("ON Y EST");
             Intent intent = new Intent(this, HistResultActivity.class);
             intent.putExtra("question",questions);
