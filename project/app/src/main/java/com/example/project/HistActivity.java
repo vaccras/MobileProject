@@ -29,6 +29,7 @@ public class HistActivity extends AppCompatActivity {
     private ArrayList<Integer> questions;
     private ArrayList<Integer> Areponses;
     private boolean creation = true;
+    private EditText reponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +42,18 @@ public class HistActivity extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
         questions = new ArrayList<>();
         Areponses = new ArrayList<>();
-        for (int i = 0 ; i<10; i++){
-            questions.add(i);
+        ArrayList<Integer> temp=new ArrayList<>();
+        for (int i = 0 ; i<12; i++){
+            temp.add(i);
         }
-        Collections.shuffle(questions);
+        Collections.shuffle(temp);
+        for (int i = 0 ; i<10; i++){
+            questions.add(temp.get(i));
+        }
+
 
         onEnter(null);
-        creation = false;
+
     }
 
     class GetHist extends AsyncTask<Void, Void, List<Histoire>> {
@@ -65,30 +71,34 @@ public class HistActivity extends AppCompatActivity {
             textViewQuestion.setText(histoires.get(questions.get(position)).getQuestion());
             textViewAide.setText(histoires.get(questions.get(position)).getAide());
             reponse_courante = histoires.get(questions.get(position)).getReponse();
+            maj(null);
 
         }
+    }
+
+    public void maj(View view) {
+
+
+
+        if(creation==false) {
+            System.out.println(reponse.getText().length() + "  sdfdddddddddddddddddddddd");
+            if (reponse.getText().length()==0) {
+                Areponses.add(9999+position);
+            } else {
+                Areponses.add(Integer.valueOf(reponse.getText().toString()));
+            }
+
+            position++;
+        }
+        creation = false;
+
+
     }
 
     public void onEnter(View view) {
 
 
-
-        GetHist gt = new GetHist();
-        gt.execute();
-
-        EditText reponse = findViewById(R.id.HIST_zonesaisie);
-
-        if(creation==false) {
-
-            System.out.println(reponse.getText().length() + "  sdfdddddddddddddddddddddd");
-            if (reponse.getText().length()==0) {
-                Areponses.add(9999);
-            } else {
-                Areponses.add(Integer.valueOf(reponse.getText().toString()));
-            }
-            position++;
-        }
-
+        reponse = findViewById(R.id.HIST_zonesaisie);
         if (position>=10){
             position=0;
             System.out.println("ON Y EST");
@@ -96,10 +106,14 @@ public class HistActivity extends AppCompatActivity {
             intent.putExtra("question",questions);
             intent.putExtra("reponses",Areponses);
             startActivity(intent);
+        }else {
+            GetHist gt = new GetHist();
+            gt.execute();
         }
 
-    }
 
+    }
+    public void retour(View view) {super.finish();}
 
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,6 +10,7 @@
         <TextView android:id="@+id/HIST_intitule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="5dp"
             android:text="Prenom"
             android:textSize="30sp"
@@ -18,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
+            android:layout_marginTop="100dp"
             android:layout_marginLeft="5dp"
             android:text="Nom"
             android:gravity="center"
@@ -26,19 +28,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text=""
+            android:text="pas d'aide ici"
+            android:layout_marginTop="200dp"
             android:gravity="center"/>
         <EditText android:id="@+id/HIST_zonesaisie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:inputType="number"
+            android:layout_marginTop="250dp"
             android:hint="exemple : 1839"
             android:gravity="center"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Valider"
+            android:layout_centerInParent="true"
             android:onClick="onEnter"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="quitter"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:onClick="retour"/>
 
-</LinearLayout>
+
+</RelativeLayout>
