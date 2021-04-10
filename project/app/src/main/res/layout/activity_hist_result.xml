@@ -27,10 +27,17 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:onClick="retour"
-        android:layout_margin="10dp"
+        android:layout_marginRight="8dp"
         android:text="quitter" >
 
     </Button>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rejouer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:onClick="rejouer"/>
 
 </RelativeLayout>

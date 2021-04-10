@@ -24,11 +24,13 @@ import java.util.List;
 
 public class HistResultActivity extends AppCompatActivity {
 
-
+    public static final String PRENOM_KEY = "PRENOM";
+    public static final String NOM_KEY = "NOM";
     private DatabaseClient mDb;
     private List<Histoire> histoires;
     private int incre=0;
-
+    private String prenom;
+    private String nom;
     private int score=0;//sur 10
 
     public ArrayList<Integer> reponsesUser = new ArrayList<>();
@@ -39,6 +41,8 @@ public class HistResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        prenom = getIntent().getStringExtra(PRENOM_KEY);
+        nom = getIntent().getStringExtra(NOM_KEY);
         setContentView(R.layout.activity_hist_result);
 
         Tableau = findViewById(R.id.HIST_Tabl);
@@ -79,7 +83,9 @@ public class HistResultActivity extends AppCompatActivity {
     public void maj() {
 
         System.out.println(histoires);
-
+        for (int num : reponsesUser) {
+            System.out.println("la reponse : "+num);
+        }
 
         for (int num : question) {
 
@@ -137,7 +143,23 @@ public class HistResultActivity extends AppCompatActivity {
         incre=0;
 
     }
+    public void retour(View view) {
+        // revient au choix du type d'exercice
+        Intent intent = new Intent(this, typeActivity.class);
+        intent.putExtra(typeActivity.PRENOM_KEY, prenom);
+        intent.putExtra(typeActivity.NOM_KEY, nom);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+        startActivity(intent);
+    }
+    public void rejouer(View view) {
 
-    public void retour(View view) {super.finish();}
+    // revient au choix de la multiplication
+    Intent intent = new Intent(this, HistActivity.class);
+    intent.putExtra(HistActivity.PRENOM_KEY, prenom);
+    intent.putExtra(HistActivity.NOM_KEY, nom);
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+    startActivity(intent);
 
+
+    }
 }

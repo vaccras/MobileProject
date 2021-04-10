@@ -44,6 +44,8 @@ public class typeActivity extends AppCompatActivity {
 
     public void CultureActivity(View view) {
         Intent intent = new Intent(this, HistActivity.class);
+        intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
+        intent.putExtra(ProfileActivity.NOM_KEY, nom);
         startActivity(intent);
     }
 
