@@ -43,10 +43,18 @@ public class typeActivity extends AppCompatActivity {
     }
 
     public void CultureActivity(View view) {
+
         Intent intent = new Intent(this, HistActivity.class);
         intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
         intent.putExtra(ProfileActivity.NOM_KEY, nom);
         startActivity(intent);
+    }
+
+    public void GeoActivity(View view) {
+
+        Intent intent = new Intent(this, Geo_Activity.class);
+        startActivity(intent);
+
     }
 
     public void annuler(View view) {
