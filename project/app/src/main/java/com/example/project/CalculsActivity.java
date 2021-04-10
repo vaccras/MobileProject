@@ -40,6 +40,7 @@ public class CalculsActivity extends AppCompatActivity {
 
     //utilitaire pour la creation d'une vue dynamique
     public TextView calcul;
+    public TextView nbQ;
     public EditText resultat;
     public TextView titleTimer;
 
@@ -68,6 +69,8 @@ public class CalculsActivity extends AppCompatActivity {
 
         calcul = findViewById(R.id.calcul);
         resultat = findViewById(R.id.resultat);
+        nbQ = findViewById(R.id.nbQuestion);
+
         if(difficulte.equals("infini")){
             //recuperation du timer et rend visible
             titleTimer = findViewById(R.id.timer);
@@ -108,6 +111,8 @@ public class CalculsActivity extends AppCompatActivity {
             int deux = min(op.getOperande1(increment), op.getOperande2(increment));
             //affichage du calcul et du resultat vide
             calcul.setText(String.valueOf(un) + type + String.valueOf(deux) + " = ");
+            nbQ.setText("question : " + String.valueOf((increment+1)));
+
             resultat.setText("");
             //mise en place du bouton valider
             Button valider = findViewById(R.id.valider);

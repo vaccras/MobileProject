@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.project.db.Compte;
 import com.example.project.db.DatabaseClient;
+import com.example.project.math.calcul;
 import com.example.project.math.comparaison;
 
 import java.util.ArrayList;
@@ -28,13 +29,13 @@ public class ComparaisonActivity extends AppCompatActivity {
     //choix utilisateur en local
     private String prenom;
     private String nom;
-    private int increment = 0;
+
+    // sauvegarde
+    public static final String STATE_CALCUL = "calcul";
 
     //utilitaire pour la creation d'une vue dynamique
     public TextView calcul;
-
-    //Tableaux pour ranger les réponses de l'utilisateurs
-    private ArrayList<Boolean> repUser = new ArrayList<>();
+    public TextView nbQ;
 
     //classe comparaison permettant de faciliter les calculs
     private comparaison op;
@@ -48,11 +49,19 @@ public class ComparaisonActivity extends AppCompatActivity {
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
 
-        //creation de l'operation en fonction de la table choisis et de l'operateur
-        op = new comparaison(1, 12);
+        // Check whether we're recreating a previously destroyed instance
+        if (savedInstanceState != null) {
+            // Restore value of members from saved state
+            op = (comparaison) savedInstanceState.getParcelable(STATE_CALCUL);
+
+        } else {
+            //creation de l'operation en fonction de la table choisis et de l'operateur
+            op = new comparaison(0, 12);
+        }
 
         //recuperation de l'objet calcul à modifier
         calcul = findViewById(R.id.comparaison);
+        nbQ = findViewById(R.id.nbQuestion);
 
         //permet de mettre a jour l'affichage une fois la réponse obtenue
         onMaj();
@@ -61,18 +70,21 @@ public class ComparaisonActivity extends AppCompatActivity {
 
     public void onMaj() {
         //si on a pas fini l'iteration sur le nombre de calcul souhaiter
-        if (increment < op.getBorneSup()) {
+        if (op.getIncrement() < op.getBorneSup()) {
+            int increment = op.getIncrement();
             //affichage du calcul sur la vue
             calcul.setText(String.valueOf(op.getOperande1(increment)) + " " + op.getOp(increment) + " " + String.valueOf(op.getOperande2(increment)));
+
+            nbQ.setText("question : " + String.valueOf((increment+1)));
 
             //cas ou l'utilisateur clique sur le bouton vrai
             Button btnVrai = findViewById(R.id.btnVrai);
             btnVrai.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    increment++;
                     //stockage de la réponse utilisateur
-                    repUser.add(true);
+                    op.setRepUser(increment, true);
+                    op.setIncrement();
                     onMaj(); //boucle sur la même fonction
                 }
             });
@@ -81,14 +93,14 @@ public class ComparaisonActivity extends AppCompatActivity {
             btnFaux.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    increment++;
                     //stockage de la réponse utilisateur
-                    repUser.add(false);
+                    op.setRepUser(increment, false);
+                    op.setIncrement();
                     onMaj(); //boucle sur la même fonction
                 }
             });
         } else {
-            int resu = op.getAllResult(repUser);
+            int resu = op.getAllResult();
 
             // Récupération du DatabaseClient
             DatabaseClient mDb = DatabaseClient.getInstance(getApplicationContext());
@@ -137,10 +149,20 @@ public class ComparaisonActivity extends AppCompatActivity {
             intent.putExtra(resultatMathActivity.PRENOM_KEY, prenom);
             intent.putExtra(resultatMathActivity.NOM_KEY, nom);
             intent.putExtra(resultatMathActivity.TYPE_KEY, "=");
-            intent.putExtra(resultatMathActivity.BORNE, String.valueOf(increment));
+            intent.putExtra(resultatMathActivity.BORNE, String.valueOf("12"));
             startActivity(intent);
         }
     }
 
     public void quitter(View view) {super.finish();}
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+
+        // Save the user's current game state
+        outState.putParcelable(STATE_CALCUL, op);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(outState);
+    }
 }
