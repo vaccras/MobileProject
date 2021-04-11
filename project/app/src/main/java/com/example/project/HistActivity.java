@@ -61,21 +61,6 @@ public class HistActivity extends AppCompatActivity {
             ARR_questions = new ArrayList<>();
             ARR_reponses = new ArrayList<>();
 
-        //========valeurs aléatoires=======================================================
-            ArrayList<Integer> temp=new ArrayList<>();
-            for (int i = 0 ; i<12; i++){
-                temp.add(i);
-            }
-            Collections.shuffle(temp);
-            for (int i = 0 ; i<10; i++){
-                ARR_questions.add(temp.get(i));
-            }
-        //=================================================================================//
-
-            //a ce stade : ARR_questions contient des nombres aléatoires entre 0 et 11
-            //ARR_reponses est vide
-            //ARR_histoires est vide
-
         //=================================================================================
             class GetHist extends AsyncTask<Void, Void, List<Histoire>> {
                 @Override
@@ -88,19 +73,28 @@ public class HistActivity extends AppCompatActivity {
                 @Override
                 protected void onPostExecute(List<Histoire> listHistoires) {
                     super.onPostExecute(listHistoires);
-                    int i =0;
                     for (Histoire hist:listHistoires){
                         ARR_histoires.add(hist);
-                        System.out.println("ARR_Histoires se remplie, contient "+ i + " histoires");
-                        i++;
+                        //System.out.println("ARR_Histoires se remplie, contient "+ i + " histoires");
                     }
+
+                    //========valeurs aléatoires=======================================================
+                    ArrayList<Integer> temp=new ArrayList<>();
+                    for (int i = 0 ; i < listHistoires.size(); i++){
+                        temp.add(i);
+                    }
+                    Collections.shuffle(temp);
+                    for (int i = 0 ; i < 10; i++){
+                        ARR_questions.add(temp.get(i));
+                    }
+                    //=================================================================================//
+
+                    onEnter(null);
                 }
             }
             GetHist gt = new GetHist();
             gt.execute();
         //============ARR_Histoires est plein=============================================//
-
-            onEnter(null);
     }
 
     public void onEnter(View view) {
