@@ -21,7 +21,7 @@
         android:id="@+id/entier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Entier"
+        android:text="Unité"
         android:layout_marginLeft="50dp"
         android:layout_above="@id/dizaine"
         android:onClick="lanceTables"/>
@@ -30,7 +30,7 @@
         android:id="@+id/dizaine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dizzaine"
+        android:text="Dizaine"
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:layout_above="@+id/centaine"
@@ -48,7 +48,7 @@
         android:id="@+id/infini"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="inifini"
+        android:text="top chrono"
         android:layout_centerInParent="true"
         android:onClick="lanceTables"/>
 

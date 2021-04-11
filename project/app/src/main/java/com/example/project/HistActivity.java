@@ -110,8 +110,8 @@ public class HistActivity extends AppCompatActivity {
 
         if(step==0){ // PREMIERE ETAPE : page d'aide avec bouton commencer
             b.setText("Commencer");
-            textViewIntitu.setText("Pour commencer cliquer sur le bouton");
-            textViewQuestion.setText("Pour chaque question répondez par un numérique, souvent une date");
+            textViewIntitu.setText("Lancer le jeu en cliquant sur commencer");
+            textViewQuestion.setText("Pour chaque question la réponse attendue est un nombre, souvent une date");
             textViewAide.setText("");
             questioncourante.setText("");
 

@@ -107,9 +107,9 @@ public class HistResultActivity extends AppCompatActivity {
             current.setBackgroundColor(getColor(R.color.LightCoral));
 
             if (reponsesUser.get(incre) >= 9999) {
-                resp.setText("pas de réponses");
+                resp.setText("pas de réponse");
             } else {
-                resp.setText("votre réponse : " + reponsesUser.get(incre));
+                resp.setText("ta réponse : " + reponsesUser.get(incre));
             }
             respAtt.setText("attendue : " + hist.getReponse());
             respAtt.setTextColor(getColor(R.color.green));
@@ -140,17 +140,17 @@ public class HistResultActivity extends AppCompatActivity {
         TextView fel = findViewById(R.id.felicitation);
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")) { // si l'utilisateur utilise un compte
             if (score > 7) {
-                fel.setText("Felicitation " + prenom + " !!");
+                fel.setText("Félicitation " + prenom + " !!");
             } else if (score < 7 && score > 4) {
-                fel.setText("Continue comme sa " + prenom + " !!");
+                fel.setText("Continue comme ça " + prenom + " !!");
             } else {
                 fel.setText("Ne te décourage pas " + prenom + " !!");
             }
         } else { // si il joue en anonyme
             if (score > 7) {
-                fel.setText("Felicitation !!");
+                fel.setText("Félicitation !!");
             } else if (score < 7 && score > 4) {
-                fel.setText("Continue comme sa !!");
+                fel.setText("Continue comme ça !!");
             } else {
                 fel.setText("Ne te décourage pas !!");
             }
@@ -158,7 +158,7 @@ public class HistResultActivity extends AppCompatActivity {
 
         // mise à jour affichage du nombre d'erreur sur le nombre de question
         TextView viewErreur = findViewById(R.id.nbErreur);
-        viewErreur.setText("Vous avez fait " + (10 - score) + " erreur sur " + 10 + " !");
+        viewErreur.setText("Tu as fait " + (10 - score) + " erreur sur " + 10 + " !");
 
         // sauvegarde en BDD du score si pas anonyme
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")) {

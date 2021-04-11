@@ -36,17 +36,17 @@ public class resultatActivity extends AppCompatActivity {
         TextView fel = findViewById(R.id.felicitation);
         if (!prenom.equals("anonyme") && !nom.equals("anonyme")){ // si l'utilisateur utilise un compte
             if(nbError < borne/3){
-                fel.setText("Felicitation " + prenom + " !!");
+                fel.setText("Félicitation " + prenom + " !!");
             }else if (nbError > borne/3 && nbError < borne/3*2){
-                fel.setText("Continue comme sa " + prenom + " !!");
+                fel.setText("Continue comme ça " + prenom + " !!");
             }else{
                 fel.setText("Ne te décourage pas " + prenom + " !!");
             }
         } else{ // si il joue en anonyme
             if(nbError < borne/3){
-                fel.setText("Felicitation !!");
+                fel.setText("Félicitation !!");
             }else if (nbError > borne/3 && nbError < borne/3*2){
-                fel.setText("Continue comme sa !!");
+                fel.setText("Continue comme ça !!");
             }else{
                 fel.setText("Ne te décourage pas !!");
             }
@@ -56,13 +56,13 @@ public class resultatActivity extends AppCompatActivity {
         TextView viewErreur = findViewById(R.id.nbErreur);
         if(type.equals("geo")){
             if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
-                fel.setText("Felicitation " + prenom + " !!");
+                fel.setText("Félicitation " + prenom + " !!");
             }else{
-                fel.setText("Felicitation !!");
+                fel.setText("Félicitation !!");
             }
-            viewErreur.setText("Votre meilleur combot est de " + nbError + " pour " + borne + " questions !");
+            viewErreur.setText("Ton meilleur combo est de " + nbError + " pour " + borne + " questions !");
         }else {
-            viewErreur.setText("Vous avez fait " + nbError + " erreur sur " + borne + " !");
+            viewErreur.setText("Tu as fait " + nbError + " erreur sur " + borne + " !");
         }
     }
 

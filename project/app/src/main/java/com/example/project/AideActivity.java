@@ -33,15 +33,14 @@ public class AideActivity extends AppCompatActivity {
         //mise à jour de l'explication en fonction des math ou de l'histoire
         TextView description = findViewById(R.id.explication);
         if (type.equals("math")){
-            description.setText("Tu as accés à 2 type d'exercices. La comparaison ou tu devras cliquer sur vrai ou faux suivant la question donné (ex: 60<5 est faux). " +
-                    "Et les exercices de calcul, l'addition, la soustraction, et la mulitiplication. " +
-                    "Pour la multiplication tu pourras choisir la difficutlé en choisissant le premier operateur entre 1 et 12, ainsi que l'ordre ou désordre des questions. " +
-                    "Pour l'addition et la soustraction, tu pourra choisir si c'est sur des entiers, des dizaines ou des centaines pour régler la difficulté. " +
+            description.setText("Tu as accès à 2 types d'exercices. La comparaison où tu devras cliquer sur vrai ou faux selon l'inégalité proposée (ex: 60<5 est faux). " +
+                    "Et des exercices de calculs concernant l'addition, la soustraction, et la mulitiplication ; soit avec 12 questions soit en une minute. " +
+                    "Pour la multiplication tu pourras définir la difficulté en choisissant le premier opérateur entre 1 et 12, ainsi que l'ordre ou le désordre des questions. " +
+                    "Pour l'addition et la soustraction, tu pourras choisir si tu travailles avec des nombres entiers à 1 chiffre (unités), 2 chiffres (dizaines) ou 3 chiffres (centaines) pour régler la difficulté. " +
                     "Bon courage, et amuse toi en apprenant !!");
         }else {
-            description.setText("Tu as accés à 2 type d'exercices. L'histoire où tu devras donné un numérique suivant une question (une petite aide est généralement fourni). " +
-                    "La géographie où tu devras reconnaître un pays sur une map coloré et en choisissant une couleur parmis trois. " +
-                    "");
+            description.setText("Tu as accès à 2 types d'exercices : un quizz d'histoire où la réponse attendue est un nombre (une petite aide est généralement fournie) " +
+                    " et un jeu de reconnaissance des pays sur une map colorée, en choisissant une couleur parmi trois, en essayant d'avoir le maximum de réponses justes à la suite ");
         }
     }
 

@@ -110,7 +110,7 @@ public class CalculsActivity extends AppCompatActivity {
             int un = max(op.getOperande1(increment), op.getOperande2(increment));
             int deux = min(op.getOperande1(increment), op.getOperande2(increment));
             //affichage du calcul et du resultat vide
-            calcul.setText(String.valueOf(un) + type + String.valueOf(deux) + " = ");
+            calcul.setText(String.valueOf(un) + " "+ type + " " + String.valueOf(deux) + " = ");
             nbQ.setText("question : " + String.valueOf((increment+1)));
 
             resultat.setText("");
@@ -136,14 +136,6 @@ public class CalculsActivity extends AppCompatActivity {
             //calcul du résultat
             result();
         }
-    }
-
-    public void quitter(View view) {
-        //si le mode choisis est infini, on arréte le timer avant de terminer l'activity
-        if(difficulte.equals("infini")){
-            timer.cancel();
-        }
-        super.finish();
     }
 
     public void result(){
@@ -192,6 +184,11 @@ public class CalculsActivity extends AppCompatActivity {
             gc.execute();
         }
 
+        //si la difficulté est infini et que l'on arrive au bout du nombre de question
+        if(difficulte.equals("infini")){
+            timer.cancel();
+        }
+
         //affichage de la vue résultat
         Intent intent = new Intent(this, resultatActivity.class);
         intent.putExtra(resultatActivity.REPONSE, String.valueOf(resu));
@@ -210,5 +207,13 @@ public class CalculsActivity extends AppCompatActivity {
         }
         setResult(0);
         finish();
+    }
+
+    public void quitter(View view) {
+        //si le mode choisis est infini, on arréte le timer avant de terminer l'activity
+        if(difficulte.equals("infini")){
+            timer.cancel();
+        }
+        super.finish();
     }
 }

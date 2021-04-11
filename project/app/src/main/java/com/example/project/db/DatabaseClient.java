@@ -54,23 +54,27 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, comparaison, culture) VALUES(\"Romain\", \"Favier\",8,15,10,3);");
             db.execSQL("INSERT INTO Compte (prenom, nom, age, calcul, comparaison, culture) VALUES(\"Cloé\", \"Dupuy\",9,5,10,20);");
 
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Revolution française\", \"En qu'elle année débute t'elle\",1789,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Europe\", \"Combien de pays font partie de l'union Europeen\",28,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Le bon roi Charlemagne\", \"En qu'elle année à t-il été couronné\",800,\"fondation de l'empire carolegien\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"5eme république\", \"Fondation de la 5eme république\",1958,\"suite de la guerre d'Algérie\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jesus Christ\", \"Quand est'il née\",0,\"Début du calendrier\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Saison\", \"Combien de saison à-t'on par ans\",5,\"attention au piège\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"General de Gaulle\", \"En qu'elle année à t-il prononcé son fameux discours <je vous ai compris... > \",1958,\"Du haut du balcon du gouvernement general d'algerie\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"CLovis\", \"En quelle année à t-il était baptisé\",496,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Louis XIV\", \"En quelle année est-il mort\",1715,\"appelé le roi soleil\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Droit des Femmes\", \"En qu'elle année les femmes ont obtenue le droit de vote en France\",1944,\"un ans avant la fin de la second guerre mondial\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Révolution française\", \"En quelle année a-t-elle débuté ?\",1789,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Europe\", \"En 2021, combien de pays font partie de l'Union Européenne ?\",27,\"n'oublies pas le Brexit\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Charlemagne\", \"En quelle année a-t-il été couronné ?\",800,\"fondation de l'empire Carolingien\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"5ème république\", \" En quelle année a commencé la 5ème république ?\",1958,\"suite de la guerre d'Algérie\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jesus Christ\", \"Quand est-il né ?\",0,\"Début du calendrier\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Saison\", \"Combien de saison y a-t-il dans une année ?\",4,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Général de Gaulle\", \"En quelle année a-t-il prononcé son fameux discours <je vous ai compris... > \",1958,\"Du haut du balcon du gouvernement général d'Algérie\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Cromagnon\", \"De quand date l'homme moderne ?\",300000,\"il y a ... ans\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Louis XIV\", \"En quelle année est-il mort ?\",1715,\"appelé le roi soleil\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Droit des Femmes\", \"En quelle année les femmes ont obtenu le droit de vote en France ?\",1944,\"un an avant la fin de la seconde guerre mondiale\");");
             db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Guerre\", \"Année du début de la première guerre mondiale\",1914,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Guerre 2\", \"Année du début de la seconde guerre mondiale\",1939,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jeanne pucelle d'Orléans\", \"En qu'elle année à t-elle remporté la victoire contre les anglais\",1429,\"Quand à t-il été couronné\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Revolutin française\", \"En quelle année à débuté le régime de la terreur\",1793,\"se termine en 1794 avec la chute de Robespierre\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Académie Française\", \"En quelle année Richellieu fonde cette institution\",1635,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Comédie Française\", \"En quelle année Louis XIV à créer la comédie Française\",1680,\"none\");");
-            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Exclavage\", \"En quelle année la France a-t-elle abolie definitivement l'esclavage\",1848,\"different de la premiere abolition en 1794\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Guerre\", \"Année du début de la seconde guerre mondiale\",1939,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Jeanne pucelle d'Orléans\", \"En qu'elle année est elle morte ?\",1431,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Révolution française\", \"En quelle année a débuté le régime de la terreur ?\",1793,\"se termine en 1794 avec la chute de Robespierre\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Académie Française\", \"En quelle année Richelieu a-t-il fondé cette institution ?\",1635,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Comédie Française\", \"En quelle année Louis XIV a-t-il créé la comédie Française ?\",1680,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Esclavage\", \"En quelle année la France a-t-elle aboli définitivement l'esclavage ?\",1848,\"bien après la première abolition en 1794 en France\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Moyen-âge\", \"Quand débute-t-il ?\",476,\"fin de l'empire Romain d'Occident\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Amériques\", \"Quand Christophe Colomb a-t-il découvert l'Amérique ?\",1492,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Invention\", \"Quand Gutemberg a-t-il inventé l'imprimerie ?\",1454,\"none\");");
+            db.execSQL("INSERT INTO Histoire (intitulee, question, reponse, aide) VALUES(\"Guerre\", \"Quand a eu lieu la bataille de Marignan ?\",1515,\"none\");");
 
         }
     };

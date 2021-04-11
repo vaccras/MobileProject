@@ -94,10 +94,7 @@ public class Geo_Activity extends AppCompatActivity {
 
 
     public void OnSelectedCountry(View view){
-
-
         Random rand = new Random();
-
 
         if (step==0){
             temp = new ArrayList<>();
@@ -184,6 +181,10 @@ public class Geo_Activity extends AppCompatActivity {
     public void retour(View view) {super.finish();}
 
     public void result(){
+        if (combo>meilleurcombo){
+            meilleurcombo=combo;
+        }
+
         // Récupération du DatabaseClient
         DatabaseClient mDb = DatabaseClient.getInstance(getApplicationContext());
 
