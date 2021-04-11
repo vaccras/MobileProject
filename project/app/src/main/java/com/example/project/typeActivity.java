@@ -36,25 +36,18 @@ public class typeActivity extends AppCompatActivity {
     public void MathActivity(View view) {
         // lancer l'activity math
         Intent intent = new Intent(this, choixMathActivity.class);
-        intent.putExtra(TableMultipActivity.PRENOM_KEY, prenom);
-        intent.putExtra(TableMultipActivity.NOM_KEY, nom);
+        intent.putExtra(choixMathActivity.PRENOM_KEY, prenom);
+        intent.putExtra(choixMathActivity.NOM_KEY, nom);
         startActivity(intent);
 
     }
 
     public void CultureActivity(View view) {
-
-        Intent intent = new Intent(this, HistActivity.class);
-        intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
-        intent.putExtra(ProfileActivity.NOM_KEY, nom);
+        // lancer l'activity culture
+        Intent intent = new Intent(this, choixCultureActivity.class);
+        intent.putExtra(choixCultureActivity.PRENOM_KEY, prenom);
+        intent.putExtra(choixCultureActivity.NOM_KEY, nom);
         startActivity(intent);
-    }
-
-    public void GeoActivity(View view) {
-
-        Intent intent = new Intent(this, Geo_Activity.class);
-        startActivity(intent);
-
     }
 
     public void annuler(View view) {

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class resultatMathActivity extends AppCompatActivity {
+public class resultatActivity extends AppCompatActivity {
     //recuperation de tout les choix utilisateur
     public static final String REPONSE = "REPONSE";
     public static final String PRENOM_KEY = "PRENOM";
@@ -23,7 +23,7 @@ public class resultatMathActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resultat_math);
+        setContentView(R.layout.activity_resultat);
 
         //recuperation des différents choix utilisateurs et de l'utilisateur
         int nbError = Integer.parseInt(getIntent().getStringExtra(REPONSE));
@@ -54,7 +54,16 @@ public class resultatMathActivity extends AppCompatActivity {
 
         // mise à jour affichage du nombre d'erreur sur le nombre de question
         TextView viewErreur = findViewById(R.id.nbErreur);
-        viewErreur.setText("Vous avez fait " + nbError + " erreur sur " + borne +" !");
+        if(type.equals("geo")){
+            if (!prenom.equals("anonyme") && !nom.equals("anonyme")){
+                fel.setText("Felicitation " + prenom + " !!");
+            }else{
+                fel.setText("Felicitation !!");
+            }
+            viewErreur.setText("Votre meilleur combot est de " + nbError + " pour " + borne + " questions !");
+        }else {
+            viewErreur.setText("Vous avez fait " + nbError + " erreur sur " + borne + " !");
+        }
     }
 
     public void rejouer(View view) {
@@ -70,6 +79,13 @@ public class resultatMathActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ComparaisonActivity.class);
             intent.putExtra(ComparaisonActivity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
             intent.putExtra(ComparaisonActivity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+            startActivity(intent);
+        }else if (type.equals("geo")) {
+            // relance une partie de geographie !
+            Intent intent = new Intent(this, Geo_Activity.class);
+            intent.putExtra(Geo_Activity.PRENOM_KEY, getIntent().getStringExtra(PRENOM_KEY));
+            intent.putExtra(Geo_Activity.NOM_KEY, getIntent().getStringExtra(NOM_KEY));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
             startActivity(intent);
         }else{

@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 public class HistActivity extends AppCompatActivity {
-
     private DatabaseClient mDb;
 
     private TextView textViewIntitu;
@@ -44,9 +43,9 @@ public class HistActivity extends AppCompatActivity {
 
         //===constructeur, passage de parametres===========================================//
             super.onCreate(savedInstanceState);
+           setContentView(R.layout.activity_hist);
             prenom = getIntent().getStringExtra(PRENOM_KEY);
             nom = getIntent().getStringExtra(NOM_KEY);
-            setContentView(R.layout.activity_hist);
 
         //==========elmt d'affichage=======================================================//
             textViewIntitu = (TextView) findViewById(R.id.HIST_intitule);
@@ -110,7 +109,6 @@ public class HistActivity extends AppCompatActivity {
         TextView questioncourante =  findViewById(R.id.HIST_numero);
 
         if(step==0){ // PREMIERE ETAPE : page d'aide avec bouton commencer
-            //System.out.println("Step 0");
             b.setText("Commencer");
             textViewIntitu.setText("Pour commencer cliquer sur le bouton");
             textViewQuestion.setText("Pour chaque question répondez par un numérique, souvent une date");
@@ -118,7 +116,6 @@ public class HistActivity extends AppCompatActivity {
             questioncourante.setText("");
 
         }else if(step==1){ // DEUXIEME ETAPE : Affichage première question
-            //System.out.println("Step 1");
             b.setText("Valider");
             textViewIntitu.setText(ARR_histoires.get(ARR_questions.get(position)).getIntitulee());
             textViewQuestion.setText(ARR_histoires.get(ARR_questions.get(position)).getQuestion());
@@ -127,13 +124,11 @@ public class HistActivity extends AppCompatActivity {
             questioncourante.setText("question numéro : "+(position));
 
         }else if(step<=10){ // TROISIEME ETAPE -> ONZIEMME ETAPE  : recup réponce de la question précédente, affichage de la question courante
-            //System.out.println("Step "+step);
             reponse = findViewById(R.id.HIST_zonesaisie);
             textViewIntitu.setText(ARR_histoires.get(ARR_questions.get(position)).getIntitulee());
             textViewQuestion.setText(ARR_histoires.get(ARR_questions.get(position)).getQuestion());
             textViewAide.setText(ARR_histoires.get(ARR_questions.get(position)).getAide());
 
-            //System.out.println(reponse.getText().length() + "  reponse enregistrée numéro :  " + position);
 
             if (reponse.getText().length()==0) {
                 ARR_reponses.add(9999+position);
@@ -151,14 +146,12 @@ public class HistActivity extends AppCompatActivity {
             } else {
                 ARR_reponses.add(Integer.valueOf(reponse.getText().toString()));
             }
-            //System.out.println("ON Y EST : " +  step + " doit etre égale à 12");
-            //System.out.println("position " +  position + " doit etre égale à 9");
 
             Intent intent = new Intent(this, HistResultActivity.class);
             intent.putExtra("question", ARR_questions);
             intent.putExtra("reponses", ARR_reponses);
-            intent.putExtra(ProfileActivity.PRENOM_KEY, prenom);
-            intent.putExtra(ProfileActivity.NOM_KEY, nom);
+            intent.putExtra(HistResultActivity.PRENOM_KEY, prenom);
+            intent.putExtra(HistResultActivity.NOM_KEY, nom);
             startActivity(intent);
 
         }

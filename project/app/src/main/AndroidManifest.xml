@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project">
-        <activity android:name=".Geo_Activity"></activity>
+        <activity android:name=".choixCultureActivity"></activity>
+        <activity android:name=".Geo_Activity" />
         <activity android:name=".HistResultActivity" />
         <activity android:name=".HistActivity" />
         <activity android:name=".BorneActivity" />
@@ -17,7 +18,7 @@
         <activity android:name=".ComparaisonActivity" />
         <activity android:name=".CalculsActivity" />
         <activity android:name=".choixMathActivity" />
-        <activity android:name=".resultatMathActivity" />
+        <activity android:name=".resultatActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".typeActivity" />
         <activity android:name=".compteActivity" />

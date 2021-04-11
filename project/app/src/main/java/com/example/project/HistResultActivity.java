@@ -16,6 +16,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.project.db.Compte;
 import com.example.project.db.DatabaseClient;
 import com.example.project.db.Histoire;
 
@@ -26,6 +27,7 @@ public class HistResultActivity extends AppCompatActivity {
 
     public static final String PRENOM_KEY = "PRENOM";
     public static final String NOM_KEY = "NOM";
+
     private DatabaseClient mDb;
     private List<Histoire> histoires;
     private int incre=0;
@@ -41,12 +43,11 @@ public class HistResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_hist_result);
         prenom = getIntent().getStringExtra(PRENOM_KEY);
         nom = getIntent().getStringExtra(NOM_KEY);
-        setContentView(R.layout.activity_hist_result);
 
         Tableau = findViewById(R.id.HIST_Tabl);
-
 
         //Récupération des réponses donnée par l'utilisateur et des question liées
         question = (ArrayList<Integer>) getIntent().getSerializableExtra("question");
@@ -81,19 +82,13 @@ public class HistResultActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void maj() {
-
-        System.out.println(histoires);
-        for (int num : reponsesUser) {
-            System.out.println("la reponse : "+num);
-        }
-
         for (int num : question) {
 
             TextView intitule = new TextView(this);
             TextView quest = new TextView(this);
             TextView resp = new TextView(this);
             TextView respAtt = new TextView(this);
-           // quest.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            // quest.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
             Histoire hist = histoires.get(num);
 
@@ -101,8 +96,8 @@ public class HistResultActivity extends AppCompatActivity {
 
             intitule.setText(hist.getIntitulee());
             quest.setText(hist.getQuestion());
-            quest.setTextColor( getColor(R.color.black));
-            intitule.setTextColor( getColor(R.color.black));
+            quest.setTextColor(getColor(R.color.black));
+            intitule.setTextColor(getColor(R.color.black));
             intitule.setTextSize(25);
             quest.setTextSize(20);
             quest.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
@@ -111,20 +106,20 @@ public class HistResultActivity extends AppCompatActivity {
 
             current.setBackgroundColor(getColor(R.color.LightCoral));
 
-            if (reponsesUser.get(incre)>=9999){
+            if (reponsesUser.get(incre) >= 9999) {
                 resp.setText("pas de réponses");
-            }else {
-                resp.setText("votre réponse : "+reponsesUser.get(incre));
+            } else {
+                resp.setText("votre réponse : " + reponsesUser.get(incre));
             }
-            respAtt.setText("attendue : "+hist.getReponse());
-            respAtt.setTextColor( getColor(R.color.green));
-            resp.setTextColor( getColor(R.color.red));
+            respAtt.setText("attendue : " + hist.getReponse());
+            respAtt.setTextColor(getColor(R.color.green));
+            resp.setTextColor(getColor(R.color.red));
 
-            if(reponsesUser.get(incre)==hist.getReponse()){
+            if (reponsesUser.get(incre) == hist.getReponse()) {
                 score++;
-                resp.setTextColor( getColor(R.color.green));
+                resp.setTextColor(getColor(R.color.green));
                 current.setBackgroundColor(getColor(R.color.PaleGreen));
-                System.out.println(score+" le score ");
+                System.out.println(score + " le score ");
             }
 
 
@@ -137,12 +132,40 @@ public class HistResultActivity extends AppCompatActivity {
 
 
             Tableau.addView(current);
-            System.out.println("passage B");
             incre++;
         }
-        incre=0;
+        incre = 0;
 
+        //affichage personnalisé en fonction du nombre d'erreur, du prenom et nom si pas anonyme
+        TextView fel = findViewById(R.id.felicitation);
+        if (!prenom.equals("anonyme") && !nom.equals("anonyme")) { // si l'utilisateur utilise un compte
+            if (score > 7) {
+                fel.setText("Felicitation " + prenom + " !!");
+            } else if (score < 7 && score > 4) {
+                fel.setText("Continue comme sa " + prenom + " !!");
+            } else {
+                fel.setText("Ne te décourage pas " + prenom + " !!");
+            }
+        } else { // si il joue en anonyme
+            if (score > 7) {
+                fel.setText("Felicitation !!");
+            } else if (score < 7 && score > 4) {
+                fel.setText("Continue comme sa !!");
+            } else {
+                fel.setText("Ne te décourage pas !!");
+            }
+        }
+
+        // mise à jour affichage du nombre d'erreur sur le nombre de question
+        TextView viewErreur = findViewById(R.id.nbErreur);
+        viewErreur.setText("Vous avez fait " + (10 - score) + " erreur sur " + 10 + " !");
+
+        // sauvegarde en BDD du score si pas anonyme
+        if (!prenom.equals("anonyme") && !nom.equals("anonyme")) {
+            result();
+        }
     }
+
     public void retour(View view) {
         // revient au choix du type d'exercice
         Intent intent = new Intent(this, typeActivity.class);
@@ -152,14 +175,53 @@ public class HistResultActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void rejouer(View view) {
+        // relance l'activity
+        Intent intent = new Intent(this, HistActivity.class);
+        intent.putExtra(HistActivity.PRENOM_KEY, prenom);
+        intent.putExtra(HistActivity.NOM_KEY, nom);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
+        startActivity(intent);
+    }
 
-    // revient au choix de la multiplication
-    Intent intent = new Intent(this, HistActivity.class);
-    intent.putExtra(HistActivity.PRENOM_KEY, prenom);
-    intent.putExtra(HistActivity.NOM_KEY, nom);
-    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //permet d'eviter l'empilement
-    startActivity(intent);
+    public void result(){
+        // Récupération du DatabaseClient
+        DatabaseClient mDb = DatabaseClient.getInstance(getApplicationContext());
 
+        //faire une AsyncTask
+        // Classe asynchrone permettant de récupérer un compte et de le mettre à jour en fonction du resultat à l'ex
+        class UpdateCompte extends AsyncTask<Void, Void, Compte> {
 
+            @Override
+            protected Compte doInBackground(Void... voids) {
+                //recuperation du compte courant
+                Compte profile = mDb.getAppDatabase().compteDao().findByName(prenom, nom);
+
+                //mise a jour du résultat de calcul
+                int resultat;
+
+                if (profile.getCulture() == -1) {
+                    // pour la première fois ou l'utilisateur enregistre des données
+                    resultat = score * 2;
+                } else {
+                    //mise à jour moyenne en fonction des nombres de bonnes réponses par rapport au nombre de réponses total raporté sur 20
+                    resultat = (profile.getCulture() + score * 2) / 2;
+                }
+
+                //mise à jour du compte
+                profile.setCulture(resultat);
+                mDb.getAppDatabase().compteDao().update(profile);
+                return profile;
+            }
+
+            @Override
+            protected void onPostExecute(Compte profile) {
+                super.onPostExecute(profile);
+            }
+        }
+
+        // IMPORTANT bien penser à executer la demande asynchrone
+        // Création d'un objet de type UpdateCompte et execution de la demande asynchrone uniquement si l'utilisateur n'est pas en anonyme
+        UpdateCompte gc = new UpdateCompte();
+        gc.execute();
     }
 }

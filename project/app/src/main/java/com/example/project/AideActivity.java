@@ -33,13 +33,15 @@ public class AideActivity extends AppCompatActivity {
         //mise à jour de l'explication en fonction des math ou de l'histoire
         TextView description = findViewById(R.id.explication);
         if (type.equals("math")){
-            description.setText("Tu as accés à 2 type d'exercices. La comparaison ou tu devras cliquer sur vrai ou faux suivant la question donné (ex: 60<5 est faux)." +
-                    "Et les exercices de calcul, l'addition, la soustraction, et la mulitiplication." +
-                    "Pour la multiplication tu pourras choisir la difficutlé en choisissant le premier operateur entre 1 et 12, ainsi que l'ordre ou désordre des questions." +
-                    "Pour l'addition et la soustraction, tu pourra choisir si c'est sur des entiers, des dizaines ou des centaines pour régler la difficulté." +
+            description.setText("Tu as accés à 2 type d'exercices. La comparaison ou tu devras cliquer sur vrai ou faux suivant la question donné (ex: 60<5 est faux). " +
+                    "Et les exercices de calcul, l'addition, la soustraction, et la mulitiplication. " +
+                    "Pour la multiplication tu pourras choisir la difficutlé en choisissant le premier operateur entre 1 et 12, ainsi que l'ordre ou désordre des questions. " +
+                    "Pour l'addition et la soustraction, tu pourra choisir si c'est sur des entiers, des dizaines ou des centaines pour régler la difficulté. " +
                     "Bon courage, et amuse toi en apprenant !!");
         }else {
-            description.setText("exercice de culture gé, Sevan fait la description!");
+            description.setText("Tu as accés à 2 type d'exercices. L'histoire où tu devras donné un numérique suivant une question (une petite aide est généralement fourni). " +
+                    "La géographie où tu devras reconnaître un pays sur une map coloré et en choisissant une couleur parmis trois. " +
+                    "");
         }
     }
 

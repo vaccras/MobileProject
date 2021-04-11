@@ -2,24 +2,29 @@ package com.example.project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
-import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.project.db.Compte;
+import com.example.project.db.DatabaseClient;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
 
 public class Geo_Activity extends AppCompatActivity {
-
-
+    public static final String PRENOM_KEY = "PRENOM";
+    public static final String NOM_KEY = "NOM";
+    private String prenom;
+    private String nom;
 
     private ImageView mapMonde;
     private ArrayList<Integer> Couleur;
@@ -40,6 +45,8 @@ public class Geo_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo);
+        prenom = getIntent().getStringExtra(PRENOM_KEY);
+        nom = getIntent().getStringExtra(NOM_KEY);
 
         ARR_questions= new ArrayList<>();
         ARR_reponses=new ArrayList<>();
@@ -161,7 +168,7 @@ public class Geo_Activity extends AppCompatActivity {
                 combo=0;
             }
 
-            retour(view);
+            result();
 
         }
 
@@ -174,6 +181,58 @@ public class Geo_Activity extends AppCompatActivity {
 
     }
 
-
     public void retour(View view) {super.finish();}
+
+    public void result(){
+        // Récupération du DatabaseClient
+        DatabaseClient mDb = DatabaseClient.getInstance(getApplicationContext());
+
+        //faire une AsyncTask
+        // Classe asynchrone permettant de récupérer un compte et de le mettre à jour en fonction du resultat à l'ex
+        class UpdateCompte extends AsyncTask<Void, Void, Compte> {
+
+            @Override
+            protected Compte doInBackground(Void... voids) {
+                //recuperation du compte courant
+                Compte profile = mDb.getAppDatabase().compteDao().findByName(prenom, nom);
+
+                //mise a jour du résultat de calcul
+                int resultat;
+
+                if (profile.getCulture() == -1) {
+                    // pour la première fois ou l'utilisateur enregistre des données
+                    resultat = meilleurcombo * 2;
+                } else {
+                    //mise à jour moyenne en fonction des nombres de bonnes réponses par rapport au nombre de réponses total raporté sur 20
+                    resultat = (profile.getCulture() + meilleurcombo * 2) / 2;
+                }
+
+                //mise à jour du compte
+                profile.setCulture(resultat);
+                mDb.getAppDatabase().compteDao().update(profile);
+                return profile;
+            }
+
+            @Override
+            protected void onPostExecute(Compte profile) {
+                super.onPostExecute(profile);
+            }
+        }
+
+        // IMPORTANT bien penser à executer la demande asynchrone
+        // Création d'un objet de type UpdateCompte et execution de la demande asynchrone uniquement si l'utilisateur n'est pas en anonyme
+        if (!prenom.equals("anonyme") && !nom.equals("anonyme")) {
+            UpdateCompte gc = new UpdateCompte();
+            gc.execute();
+        }
+
+        //affichage de la vue résultat
+        Intent intent = new Intent(this, resultatActivity.class);
+        intent.putExtra(resultatActivity.REPONSE, String.valueOf(meilleurcombo));
+        intent.putExtra(resultatActivity.PRENOM_KEY, prenom);
+        intent.putExtra(resultatActivity.NOM_KEY, nom);
+        intent.putExtra(resultatActivity.TYPE_KEY, "geo");
+        intent.putExtra(resultatActivity.BORNE, "10");
+        startActivity(intent);
+    }
 }

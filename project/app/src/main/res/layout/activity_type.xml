@@ -24,16 +24,10 @@
     <Button android:id="@+id/culture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Histoire"
+        android:text="Culture"
         android:onClick="CultureActivity"
         android:layout_marginLeft="7dp"/>
-
-    <Button android:id="@+id/Géographie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Géographie"
-        android:onClick="GeoActivity"
-        android:layout_marginLeft="7dp"/>
+        
     </LinearLayout>
 
     <Button android:id="@+id/profil"

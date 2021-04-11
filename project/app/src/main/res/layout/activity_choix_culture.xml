@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".choixCultureActivity"
+    android:background="@drawable/bulle">
+
+    <Button
+        android:id="@+id/histoire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Geo"
+        android:text="Histoire"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:onClick="histoire"/>
+
+    <Button
+        android:id="@+id/Geo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geographie"
+        android:layout_centerInParent="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:textSize="20dp"
+        android:onClick="geographie"/>
+
+    <Button
+        android:id="@+id/aide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aide"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        android:onClick="aide"/>
+
+    <Button
+        android:id="@+id/quit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="annuler"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        android:onClick="quitter"/>
+</RelativeLayout>

@@ -154,7 +154,7 @@ public class CalculsActivity extends AppCompatActivity {
         DatabaseClient mDb = DatabaseClient.getInstance(getApplicationContext());
 
         //faire une AsyncTask
-        // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
+        // Classe asynchrone permettant de récupérer un compte et de le mettre à jour en fonction du resultat à l'ex
         class UpdateCompte extends AsyncTask<Void, Void, Compte> {
 
             @Override
@@ -193,12 +193,12 @@ public class CalculsActivity extends AppCompatActivity {
         }
 
         //affichage de la vue résultat
-        Intent intent = new Intent(this, resultatMathActivity.class);
-        intent.putExtra(resultatMathActivity.REPONSE, String.valueOf(resu));
-        intent.putExtra(resultatMathActivity.PRENOM_KEY, prenom);
-        intent.putExtra(resultatMathActivity.NOM_KEY, nom);
-        intent.putExtra(resultatMathActivity.TYPE_KEY, type);
-        intent.putExtra(resultatMathActivity.BORNE, String.valueOf(increment));
+        Intent intent = new Intent(this, resultatActivity.class);
+        intent.putExtra(resultatActivity.REPONSE, String.valueOf(resu));
+        intent.putExtra(resultatActivity.PRENOM_KEY, prenom);
+        intent.putExtra(resultatActivity.NOM_KEY, nom);
+        intent.putExtra(resultatActivity.TYPE_KEY, type);
+        intent.putExtra(resultatActivity.BORNE, String.valueOf(increment));
         startActivity(intent);
     }
 

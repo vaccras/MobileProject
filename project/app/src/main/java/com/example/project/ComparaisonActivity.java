@@ -5,18 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.project.db.Compte;
 import com.example.project.db.DatabaseClient;
-import com.example.project.math.calcul;
 import com.example.project.math.comparaison;
-
-import java.util.ArrayList;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -144,12 +139,12 @@ public class ComparaisonActivity extends AppCompatActivity {
             }
 
             //affichage de la vue résultat
-            Intent intent = new Intent(this, resultatMathActivity.class);
-            intent.putExtra(resultatMathActivity.REPONSE, String.valueOf(resu));
-            intent.putExtra(resultatMathActivity.PRENOM_KEY, prenom);
-            intent.putExtra(resultatMathActivity.NOM_KEY, nom);
-            intent.putExtra(resultatMathActivity.TYPE_KEY, "=");
-            intent.putExtra(resultatMathActivity.BORNE, String.valueOf("12"));
+            Intent intent = new Intent(this, resultatActivity.class);
+            intent.putExtra(resultatActivity.REPONSE, String.valueOf(resu));
+            intent.putExtra(resultatActivity.PRENOM_KEY, prenom);
+            intent.putExtra(resultatActivity.NOM_KEY, nom);
+            intent.putExtra(resultatActivity.TYPE_KEY, "=");
+            intent.putExtra(resultatActivity.BORNE, String.valueOf("12"));
             startActivity(intent);
         }
     }
